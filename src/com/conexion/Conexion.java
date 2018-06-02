@@ -5,11 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- * Nombre de la clase: Conexion
- * Version: 1.0
- * Fecha: 05/12/18
- * @author Administrador
- * CopyRight: ITCA-FEPADE
+ *
+ * @author carlos franco
  */
 public class Conexion {
     private Connection con;
@@ -48,5 +45,4 @@ public class Conexion {
         }
        
     }
-    
 }

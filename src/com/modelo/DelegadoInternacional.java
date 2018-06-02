@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.modelo;
 
 /**
@@ -10,45 +6,46 @@ package com.modelo;
  * @author carlos franco
  */
 public class DelegadoInternacional {
-    private int id_delgadointernacional;
-    private String nombre;
-    private String apellido;
+    
+    private int coddelegado;
+    private String delgadointernacional;
     private String cargo;
-    private int id_Usuario;
+    private Usuario usuario;
+    private int activo;
 
     public DelegadoInternacional() {
     }
 
-    public DelegadoInternacional(int id_delgadointernacional, String nombre, String apellido, String cargo, int id_Usuario) {
-        this.id_delgadointernacional = id_delgadointernacional;
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public DelegadoInternacional(int coddelegado, String delgadointernacional, String cargo, Usuario usuario, int activo) {
+        this.coddelegado = coddelegado;
+        this.delgadointernacional = delgadointernacional;
         this.cargo = cargo;
-        this.id_Usuario = id_Usuario;
+        this.usuario = usuario;
+        this.activo = activo;
     }
 
-    public int getId_delgadointernacional() {
-        return id_delgadointernacional;
+    public int getActivo() {
+        return activo;
     }
 
-    public void setId_delgadointernacional(int id_delgadointernacional) {
-        this.id_delgadointernacional = id_delgadointernacional;
+    public void setActivo(int activo) {
+        this.activo = activo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getCoddelegado() {
+        return coddelegado;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCoddelegado(int coddelegado) {
+        this.coddelegado = coddelegado;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getDelgadointernacional() {
+        return delgadointernacional;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setDelgadointernacional(String delgadointernacional) {
+        this.delgadointernacional = delgadointernacional;
     }
 
     public String getCargo() {
@@ -59,14 +56,13 @@ public class DelegadoInternacional {
         this.cargo = cargo;
     }
 
-    public int getId_Usuario() {
-        return id_Usuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setId_Usuario(int id_Usuario) {
-        this.id_Usuario = id_Usuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
     
-
 }

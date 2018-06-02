@@ -6,34 +6,43 @@ package com.modelo;
  * @author carlos franco
  */
 public class Departamento {
-    
-    private int codigoDepartamento;
-    private String Departamento;
+   
+    private int coddepartamento;
+    private String departamento;
+    private int activo;
 
     public Departamento() {
     }
 
-    public Departamento(int codigoDepartamento, String Departamento) {
-        this.codigoDepartamento = codigoDepartamento;
-        this.Departamento = Departamento;
+    public Departamento(int coddepartamento, String departamento, int activo) {
+        this.coddepartamento = coddepartamento;
+        this.departamento = departamento;
+        this.activo = activo;
+    }
+
+    public int getCoddepartamento() {
+        return coddepartamento;
+    }
+
+    public void setCoddepartamento(int coddepartamento) {
+        this.coddepartamento = coddepartamento;
     }
 
     public String getDepartamento() {
-        return Departamento;
+        return departamento;
     }
 
-    public void setDepartamento(String Departamento) {
-        this.Departamento = Departamento;
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
     }
 
-    public int getCodigoDepartamento() {
-        return codigoDepartamento;
+    public int getActivo() {
+        return activo;
     }
 
-    public void setCodigoDepartamento(int codigoDepartamento) {
-        this.codigoDepartamento = codigoDepartamento;
+    public void setActivo(int activo) {
+        this.activo = activo;
     }
-    
-    
+
     
 }

@@ -6,44 +6,53 @@ package com.modelo;
  * @author carlos franco
  */
 public class Encargado {
-    private int codigoencargado; 
-    private String nombre;
-    private String estado_civil;
+    
+    private int codencargado;
+    private String encargado;
+    private String dui;
+    private int activo;
 
     public Encargado() {
     }
 
-    public Encargado(int codigoencargado, String nombre, String estado_civil) {
-        this.codigoencargado = codigoencargado;
-        this.nombre = nombre;
-        this.estado_civil = estado_civil;
+    public Encargado(int codencargado, String encargado, String dui, int activo) {
+        this.codencargado = codencargado;
+        this.encargado = encargado;
+        this.dui = dui;
+        this.activo = activo;
     }
 
-    public int getCodigoencargado() {
-        return codigoencargado;
+    public int getActivo() {
+        return activo;
     }
 
-    public void setCodigoencargado(int codigoencargado) {
-        this.codigoencargado = codigoencargado;
+    public void setActivo(int activo) {
+        this.activo = activo;
     }
 
+    public int getCodencargado() {
+        return codencargado;
+    }
+
+    public void setCodencargado(int codencargado) {
+        this.codencargado = codencargado;
+    }
+
+    public String getEncargado() {
+        return encargado;
+    }
+
+    public void setEncargado(String encargado) {
+        this.encargado = encargado;
+    }
+
+    public String getDui() {
+        return dui;
+    }
+
+    public void setDui(String dui) {
+        this.dui = dui;
+    }
     
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEstado_civil() {
-        return estado_civil;
-    }
-
-    public void setEstado_civil(String estado_civil) {
-        this.estado_civil = estado_civil;
-    }
-
     
 }

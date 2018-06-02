@@ -2,51 +2,50 @@
 package com.modelo;
 
 /**
- * Nombre de la Clase: Usuario
- * Version: 1.0
- * Fecha: 05/12/18
- * @author Administrador
- * CopyRight: ITCA-FEPADE
+ *
+ * @author carlos franco
  */
 public class Usuario {
     
-    private int codigousuario;
-    private String usuario;
+    private int codusuario;
+    private String user;
     private String clave;
-    private String tipo;
+    private String tipousuario;
+    private int activo;
 
     public Usuario() {
     }
 
-    public Usuario(int codigousuario, String usuario, String clave, String tipo) {
-        this.codigousuario = codigousuario;
-        this.usuario = usuario;
+    public Usuario(int codusuario, String user, String clave, String tipousuario, int activo) {
+        this.codusuario = codusuario;
+        this.user = user;
         this.clave = clave;
-        this.tipo = tipo;
+        this.tipousuario = tipousuario;
+        this.activo = activo;
     }
 
-    public String getTipo() {
-        return tipo;
+    public int getActivo() {
+        return activo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setActivo(int activo) {
+        this.activo = activo;
     }
 
-    public int getCodigousuario() {
-        return codigousuario;
+    public int getCodusuario() {
+        return codusuario;
     }
 
-    public void setCodigousuario(int codigousuario) {
-        this.codigousuario = codigousuario;
+    public void setCodusuario(int codusuario) {
+        this.codusuario = codusuario;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUser() {
+        return user;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getClave() {
@@ -55,6 +54,14 @@ public class Usuario {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public String getTipousuario() {
+        return tipousuario;
+    }
+
+    public void setTipousuario(String tipousuario) {
+        this.tipousuario = tipousuario;
     }
     
     

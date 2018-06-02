@@ -5,47 +5,54 @@ package com.modelo;
  *
  * @author carlos franco
  */
-public class Municipio
-{
-    private int id_municipio;
-    private String nombre;
-    private Departamento Departamento;
+public class Municipio {
+    
+    private int codmunicipio;
+    private String municipio;
+    private Departamento departamento;
+    private int activo;
 
     public Municipio() {
     }
 
-    public Municipio(int id_municipio, String nombre, Departamento Departamento) {
-        this.id_municipio = id_municipio;
-        this.nombre = nombre;
-        this.Departamento = Departamento;
+    public Municipio(int codmunicipio, String municipio, Departamento departamento, int activo) {
+        this.codmunicipio = codmunicipio;
+        this.municipio = municipio;
+        this.departamento = departamento;
+        this.activo = activo;
     }
 
-    public int getId_municipio() {
-        return id_municipio;
+    public int getCodmunicipio() {
+        return codmunicipio;
     }
 
-    public void setId_municipio(int id_municipio) {
-        this.id_municipio = id_municipio;
+    public void setCodmunicipio(int codmunicipio) {
+        this.codmunicipio = codmunicipio;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getMunicipio() {
+        return municipio;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
     }
 
     public Departamento getDepartamento() {
-        return Departamento;
+        return departamento;
     }
 
-    public void setDepartamento(Departamento Departamento) {
-        this.Departamento = Departamento;
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 
-    
-    
-    
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }
+
     
 }

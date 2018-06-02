@@ -7,44 +7,62 @@ package com.modelo;
  */
 public class PartidoPolitico {
     
-    private int codigopartidoPolitico; 
-    private String nombre; 
-    private int codigopresidentepp;  
+    private int codpartido;
+    private String partido;
+    private String presidente;
+    private byte[] fotoPartido;
+    private int activo;
 
     public PartidoPolitico() {
     }
 
-    public PartidoPolitico(int codigopartidoPolitico, String nombre, int codigopresidentepp) {
-        this.codigopartidoPolitico = codigopartidoPolitico;
-        this.nombre = nombre;
-        this.codigopresidentepp = codigopresidentepp;
+    public PartidoPolitico(int codpartido, String partido, String presidente, byte[] fotoPartido, int activo) {
+        this.codpartido = codpartido;
+        this.partido = partido;
+        this.presidente = presidente;
+        this.fotoPartido = fotoPartido;
+        this.activo = activo;
     }
 
-    public int getCodigopartidoPolitico() {
-        return codigopartidoPolitico;
+    public int getCodpartido() {
+        return codpartido;
     }
 
-    public void setCodigopartidoPolitico(int codigopartidoPolitico) {
-        this.codigopartidoPolitico = codigopartidoPolitico;
+    public void setCodpartido(int codpartido) {
+        this.codpartido = codpartido;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getPartido() {
+        return partido;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setPartido(String partido) {
+        this.partido = partido;
     }
 
-    public int getCodigopresidentepp() {
-        return codigopresidentepp;
+    public String getPresidente() {
+        return presidente;
     }
 
-    public void setCodigopresidentepp(int codigopresidentepp) {
-        this.codigopresidentepp = codigopresidentepp;
+    public void setPresidente(String presidente) {
+        this.presidente = presidente;
     }
+
+    public byte[] getFotoPartido() {
+        return fotoPartido;
+    }
+
+    public void setFotoPartido(byte[] fotoPartido) {
+        this.fotoPartido = fotoPartido;
+    }
+
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }
+
     
-    
-
-
 }

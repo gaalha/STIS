@@ -1,9 +1,11 @@
 
 package com.controlador;
 
-import com.modelo.Departamento;
 import com.conexion.Conexion;
-import java.sql.*;
+import com.modelo.Departamento;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,15 +14,15 @@ import java.util.List;
  * @author carlos franco
  */
 public class DaoDepartamento extends Conexion{
-    
     public void insertarDepartamento(Departamento depa) throws Exception{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarDepartamento` (?,?)}";
+            String sql="{CALL `insertarDepartamento`(?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1, depa.getCodigoDepartamento());
+            pre.setInt(1, depa.getCoddepartamento());
             pre.setString(2,depa.getDepartamento());
+            pre.setInt(3, depa.getActivo());
             pre.executeUpdate();
             
         } catch (Exception e) {
@@ -32,8 +34,7 @@ public class DaoDepartamento extends Conexion{
         }
     }
     
-    
-    public List mostrarDeparatamento() throws Exception
+    public List mostrarDepartamento() throws Exception
     {
         List listadepartamento=new ArrayList();
         ResultSet res;
@@ -41,14 +42,15 @@ public class DaoDepartamento extends Conexion{
         try 
         {
             this.conectar();
-            String sql="{CALL mostrarDepartamento ()}";
+            String sql="{CALL `mostrarDepartamento`()}";
             st=this.getCon().createStatement();
             res=st.executeQuery(sql);
             while(res.next())
             {
                Departamento de=new Departamento();
-               de.setCodigoDepartamento(res.getInt("id_departamento"));
-               de.setDepartamento(res.getString("nombre"));
+               de.setCoddepartamento(res.getInt("id_departamento"));
+               de.setDepartamento(res.getString("nombre_departamento"));
+               de.setActivo(res.getInt("activo"));
                listadepartamento.add(de);
             }
         } catch (Exception e) {
@@ -60,15 +62,17 @@ public class DaoDepartamento extends Conexion{
         }
         return listadepartamento;
     }
+    
     public void modificarDepartamento(Departamento depa) throws Exception
     { 
         try 
         {
             this.conectar();
-            String sql="{CALL `modificarDepartamento` (?,?)}";
+            String sql="{CALL `modificarDepartamento` (?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1,depa.getCodigoDepartamento());
+            pre.setInt(1,depa.getCoddepartamento());
             pre.setString(2,depa.getDepartamento());
+            pre.setInt(3, depa.getActivo());
             pre.executeUpdate();
             
         } catch (Exception e) {
@@ -79,6 +83,7 @@ public class DaoDepartamento extends Conexion{
             this.desconectar();
         }
     }
+    
     public void eliminarDepartamento(Departamento depa) throws Exception
     { 
         try 
@@ -86,7 +91,7 @@ public class DaoDepartamento extends Conexion{
             this.conectar();
             String sql="{CALL `eliminarDepartamento` (?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1,depa.getCodigoDepartamento());
+            pre.setInt(1,depa.getCoddepartamento());
             pre.executeUpdate();
             
         } catch (Exception e) {

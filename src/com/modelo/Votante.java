@@ -7,55 +7,57 @@ package com.modelo;
  */
 public class Votante {
     
-    private int codigovotante;
-    private String nombre;
+    private int codvotante;
+    private String votante;
     private String dui;
-    private String nombreMadre;
-    private String nombrePadre;
-    private String fechanac;
+    private String nombrepadre;
+    private String nombremadre;
+    private String fecha;
     private String estadocivil;
     private String direccion;
-    private int codigousuario;
-    private int codigomunicipio;
+    private Municipio municipio;
+    private Usuario usuario;
+    private int activo;
 
     public Votante() {
     }
 
-    public Votante(int codigovotante, String nombre, String dui, String nombreMadre, String nombrePadre, String fechanac, String estadocivil, String direccion, int codigousuario, int codigomunicipio) {
-        this.codigovotante = codigovotante;
-        this.nombre = nombre;
+    public Votante(int codvotante, String votante, String dui, String nombrepadre, String nombremadre, String fecha, String estadocivil, String direccion, Municipio municipio, Usuario usuario, int activo) {
+        this.codvotante = codvotante;
+        this.votante = votante;
         this.dui = dui;
-        this.nombreMadre = nombreMadre;
-        this.nombrePadre = nombrePadre;
-        this.fechanac = fechanac;
+        this.nombrepadre = nombrepadre;
+        this.nombremadre = nombremadre;
+        this.fecha = fecha;
         this.estadocivil = estadocivil;
         this.direccion = direccion;
-        this.codigousuario = codigousuario;
-        this.codigomunicipio = codigomunicipio;
+        this.municipio = municipio;
+        this.usuario = usuario;
+        this.activo = activo;
     }
 
-    public int getCodigomunicipio() {
-        return codigomunicipio;
+    public int getActivo() {
+        return activo;
     }
 
-    public void setCodigomunicipio(int codigomunicipio) {
-        this.codigomunicipio = codigomunicipio;
+    public void setActivo(int activo) {
+        this.activo = activo;
     }
 
-    public int getCodigovotante() {
-        return codigovotante;
+    public int getCodvotante() {
+        return codvotante;
     }
 
-    public void setCodigovotante(int codigovotante) {
-        this.codigovotante = codigovotante;
+    public void setCodvotante(int codvotante) {
+        this.codvotante = codvotante;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getVotante() {
+        return votante;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setVotante(String votante) {
+        this.votante = votante;
     }
 
     public String getDui() {
@@ -66,28 +68,28 @@ public class Votante {
         this.dui = dui;
     }
 
-    public String getNombreMadre() {
-        return nombreMadre;
+    public String getNombrepadre() {
+        return nombrepadre;
     }
 
-    public void setNombreMadre(String nombreMadre) {
-        this.nombreMadre = nombreMadre;
+    public void setNombrepadre(String nombrepadre) {
+        this.nombrepadre = nombrepadre;
     }
 
-    public String getNombrePadre() {
-        return nombrePadre;
+    public String getNombremadre() {
+        return nombremadre;
     }
 
-    public void setNombrePadre(String nombrePadre) {
-        this.nombrePadre = nombrePadre;
+    public void setNombremadre(String nombremadre) {
+        this.nombremadre = nombremadre;
     }
 
-    public String getFechanac() {
-        return fechanac;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setFechanac(String fechanac) {
-        this.fechanac = fechanac;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     public String getEstadocivil() {
@@ -106,12 +108,20 @@ public class Votante {
         this.direccion = direccion;
     }
 
-    public int getCodigousuario() {
-        return codigousuario;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 
-    public void setCodigousuario(int codigousuario) {
-        this.codigousuario = codigousuario;
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
     
