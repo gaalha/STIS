@@ -13,7 +13,7 @@ public class Login {
     public Connection conexion(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conect=DriverManager.getConnection("jdbc:mysql://localhost/Votacion2018","root","");
+            conect=DriverManager.getConnection("jdbc:mysql://localhost/votacion2018bd","root","");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR"+e);
         }

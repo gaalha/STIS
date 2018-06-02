@@ -26,7 +26,7 @@ public class Conexion {
         try 
         {
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/Votacion2018?user=root&password=");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/votacion2018bd?user=root&password=");
         } catch (Exception e) {
             throw e;
         }

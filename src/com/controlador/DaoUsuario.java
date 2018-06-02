@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.controlador;
 
 import com.conexion.Conexion;
@@ -49,7 +45,7 @@ public class DaoUsuario extends Conexion{
         try 
         {
             this.conectar();
-            String sql="{CALL mostrarUsuario ()}";
+            String sql="{CALL `mostrarUsuario`()}";
             st=this.getCon().createStatement();
             res=st.executeQuery(sql);
             while(res.next())

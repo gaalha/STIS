@@ -193,7 +193,7 @@ public class FrmLogin extends javax.swing.JFrame {
             admin.pack();
             /**FrmAdministrador.lbConectar.setText(usuario);**/
         }
-        if(var.equals("Delegado")){
+        if(var.equals("DelegadoInternacional")){
             this.setVisible(false);
             JOptionPane.showMessageDialog(null, "Bienvenido");
             FrmDelegado dele = new FrmDelegado();
