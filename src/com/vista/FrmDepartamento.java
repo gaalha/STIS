@@ -20,6 +20,18 @@ public class FrmDepartamento extends javax.swing.JInternalFrame {
         initComponents();
         tablaE();
         jTXTcodigoDepartamento.setVisible(false); //OCULTA EL CAMPO ID DEPARTAMENTO
+        
+        /*if(jTXTcodigoDepartamento.getText().isEmpty() && jTXTDepartamento.getText().isEmpty()){
+            this.BtnModificar.setEnabled(false);
+            this.BtnEliminar.setEnabled(false);
+            this.BtnIngresar.setEnabled(false);
+        }
+        if(!jTXTDepartamento.getText().isEmpty()){
+            this.BtnIngresar.setEnabled(false);
+            this.BtnEliminar.setEnabled(true);
+            this.BtnModificar.setEnabled(true);
+            this.BtnLimpiar.setEnabled(true);
+        }*/
     }
 
     /**
@@ -110,7 +122,11 @@ public class FrmDepartamento extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnIngresarMouseClicked
-        insertar();
+        if(jTXTDepartamento.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No puedes dejar campos vacios");
+        }else{
+            insertar();
+        }
     }//GEN-LAST:event_BtnIngresarMouseClicked
 
     private void BtnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnModificarMouseClicked
@@ -118,7 +134,11 @@ public class FrmDepartamento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnModificarMouseClicked
 
     private void BtnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEliminarMouseClicked
-        eliminar();
+        if(jTXTDepartamento.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El registro no puede estar vacio.");
+        }else{
+            eliminar();
+        }
     }//GEN-LAST:event_BtnEliminarMouseClicked
 
     private void jTableDepartamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDepartamentoMouseClicked
@@ -212,7 +232,7 @@ public class FrmDepartamento extends javax.swing.JInternalFrame {
                     JOptionPane.ERROR_MESSAGE);
         } 
     }
-public void tablaE()
+    public void tablaE()
     {
         String [] columnas={"CodigoDepartamento","NombreDepartamento"} ;
         Object[] obj=new Object[2];
@@ -235,6 +255,10 @@ public void tablaE()
         {
             JOptionPane.showMessageDialog(this, "Error al mostrar datos" + e.toString());
         }
+    }
+    
+    public void enableButtons(){
+        this.BtnIngresar.setEnabled(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnEliminar;
