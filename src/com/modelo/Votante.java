@@ -16,13 +16,12 @@ public class Votante {
     private String estadocivil;
     private String direccion;
     private Municipio municipio;
-    private Usuario usuario;
     private int activo;
 
     public Votante() {
     }
 
-    public Votante(int codvotante, String votante, String dui, String nombrepadre, String nombremadre, String fecha, String estadocivil, String direccion, Municipio municipio, Usuario usuario, int activo) {
+    public Votante(int codvotante, String votante, String dui, String nombrepadre, String nombremadre, String fecha, String estadocivil, String direccion, Municipio municipio, int activo) {
         this.codvotante = codvotante;
         this.votante = votante;
         this.dui = dui;
@@ -32,15 +31,6 @@ public class Votante {
         this.estadocivil = estadocivil;
         this.direccion = direccion;
         this.municipio = municipio;
-        this.usuario = usuario;
-        this.activo = activo;
-    }
-
-    public int getActivo() {
-        return activo;
-    }
-
-    public void setActivo(int activo) {
         this.activo = activo;
     }
 
@@ -116,13 +106,13 @@ public class Votante {
         this.municipio = municipio;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public int getActivo() {
+        return activo;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setActivo(int activo) {
+        this.activo = activo;
     }
-    
+
     
 }

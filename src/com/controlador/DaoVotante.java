@@ -18,7 +18,7 @@ public class DaoVotante extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarVotante`(?,?,?,?,?,?,?,?,?,?,?)}";
+            String sql="{CALL `insertarVotante`(?,?,?,?,?,?,?,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
             pre.setInt(1, vot.getCodvotante());
             pre.setString(2, vot.getVotante());
@@ -29,8 +29,7 @@ public class DaoVotante extends Conexion{
             pre.setString(7, vot.getEstadocivil());
             pre.setString(8, vot.getDireccion());
             pre.setInt(9, vot.getMunicipio().getCodmunicipio());
-            pre.setInt(10, vot.getUsuario().getCodusuario());
-            pre.setInt(11, vot.getActivo());
+            pre.setInt(10, vot.getActivo());
             pre.executeUpdate();
             
         } catch (Exception e) {
@@ -64,7 +63,7 @@ public class DaoVotante extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarVotante`(?,?,?,?,?,?,?,?,?,?,?)}";
+            String sql="{CALL `insertarVotante`(?,?,?,?,?,?,?,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
             pre.setInt(1, vot.getCodvotante());
             pre.setString(2, vot.getVotante());
@@ -75,8 +74,7 @@ public class DaoVotante extends Conexion{
             pre.setString(7, vot.getEstadocivil());
             pre.setString(8, vot.getDireccion());
             pre.setInt(9, vot.getMunicipio().getCodmunicipio());
-            pre.setInt(10, vot.getUsuario().getCodusuario());
-            pre.setInt(11, vot.getActivo());
+            pre.setInt(10, vot.getActivo());
             pre.executeUpdate();
             
         } catch (Exception e) {
@@ -122,12 +120,6 @@ public class DaoVotante extends Conexion{
                Municipio muni = new Municipio();
                muni.setCodmunicipio(res.getInt("id_municipio"));
                muni.setMunicipio(res.getString("nombre_municipio"));
-               Usuario us = new Usuario();
-               us.setCodusuario(res.getInt("id_usuario"));
-               us.setUser(res.getString("usuario"));
-               us.setClave(res.getString("clave"));
-               us.setTipousuario(res.getString("tipo_usuario"));
-               us.setActivo(res.getInt("activo"));
                Votante vot = new Votante();
                vot.setCodvotante(res.getInt("id_votante"));
                vot.setVotante(res.getString("nombre_votante"));
@@ -139,7 +131,6 @@ public class DaoVotante extends Conexion{
                vot.setVotante(res.getString("estadoCivil"));
                vot.setVotante(res.getString("direccion"));
                vot.setMunicipio(muni);
-               vot.setUsuario(us);
                vot.setActivo(res.getInt("activo"));
                listavotante.add(vot);
             }
