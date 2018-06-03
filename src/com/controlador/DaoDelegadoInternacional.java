@@ -18,9 +18,8 @@ public class DaoDelegadoInternacional extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarDelegado`(?,?,?,?,?)}";
+            String sql="{CALL `insertarDelegado`(null,?,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1, del.getCoddelegado());
             pre.setString(2,del.getDelgadointernacional());
             pre.setString(3,del.getCargo());
             pre.setInt(4, del.getUsuario().getCodusuario());

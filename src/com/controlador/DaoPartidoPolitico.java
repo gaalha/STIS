@@ -18,9 +18,8 @@ public class DaoPartidoPolitico extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarPartido`(?,?,?,?,?)}";
+            String sql="{CALL `insertarPartido`(null,?,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1, par.getCodpartido());
             pre.setString(2,par.getPartido());
             pre.setString(3,par.getPresidente());
             pre.setBytes(4, par.getFotoPartido());

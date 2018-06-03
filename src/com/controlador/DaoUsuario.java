@@ -18,9 +18,8 @@ public class DaoUsuario extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarUsuario` (?,?,?,?,?)}";
+            String sql="{CALL `insertarUsuario` (null,?,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1, us.getCodusuario());
             pre.setString(2,us.getUser());
             pre.setString(3, us.getClave());
             pre.setString(4,us.getTipousuario());

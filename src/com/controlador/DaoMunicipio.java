@@ -19,9 +19,8 @@ public class DaoMunicipio extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarMunicipio`(?,?,?,?)}";
+            String sql="{CALL `insertarMunicipio`(null,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1, mu.getCodmunicipio());
             pre.setString(2,mu.getMunicipio());
             pre.setInt(3, mu.getDepartamento().getCoddepartamento());
             pre.setInt(4, mu.getActivo());

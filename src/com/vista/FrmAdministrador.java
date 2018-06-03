@@ -29,14 +29,14 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jBtnPeriodo = new javax.swing.JButton();
         jBtnCerrar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        jBtnUsuario = new javax.swing.JButton();
+        jBtnCandidato = new javax.swing.JButton();
+        jBtnVotante = new javax.swing.JButton();
+        jBtnPartido = new javax.swing.JButton();
+        jBtnJRV = new javax.swing.JButton();
+        jBtnEncargado = new javax.swing.JButton();
         jBtnMunicipio = new javax.swing.JButton();
         jBtnDepartamento = new javax.swing.JButton();
         jBtnDelegado = new javax.swing.JButton();
@@ -44,6 +44,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
+        jBtnDelegado1 = new javax.swing.JButton();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -54,82 +56,131 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 102));
 
-        jButton1.setBackground(new java.awt.Color(0, 51, 102));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("GESTIONAR PERIODO");
-        jButton1.setBorder(null);
+        jBtnPeriodo.setBackground(new java.awt.Color(0, 51, 102));
+        jBtnPeriodo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnPeriodo.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnPeriodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calendario.png"))); // NOI18N
+        jBtnPeriodo.setText("GESTIONAR PERIODO");
+        jBtnPeriodo.setBorder(null);
+        jBtnPeriodo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnPeriodo.setIconTextGap(75);
+        jBtnPeriodo.setRolloverEnabled(false);
 
         jBtnCerrar.setBackground(new java.awt.Color(0, 51, 102));
         jBtnCerrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jBtnCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/login (1).png"))); // NOI18N
         jBtnCerrar.setText("CERRAR SESION");
         jBtnCerrar.setBorder(null);
+        jBtnCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnCerrar.setRolloverEnabled(false);
         jBtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnCerrarMouseClicked(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(0, 51, 102));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("GESTIONAR USUARIO");
-        jButton3.setBorder(null);
+        jBtnUsuario.setBackground(new java.awt.Color(0, 51, 102));
+        jBtnUsuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (2).png"))); // NOI18N
+        jBtnUsuario.setText("GESTIONAR USUARIO");
+        jBtnUsuario.setBorder(null);
+        jBtnUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnUsuario.setIconTextGap(75);
+        jBtnUsuario.setRolloverEnabled(false);
 
-        jButton4.setBackground(new java.awt.Color(0, 51, 102));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("GESTIONAR CANDIDATO");
-        jButton4.setBorder(null);
+        jBtnCandidato.setBackground(new java.awt.Color(0, 51, 102));
+        jBtnCandidato.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnCandidato.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnCandidato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/candidato.png"))); // NOI18N
+        jBtnCandidato.setText("GESTIONAR CANDIDATO");
+        jBtnCandidato.setBorder(null);
+        jBtnCandidato.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnCandidato.setIconTextGap(58);
+        jBtnCandidato.setRolloverEnabled(false);
 
-        jButton5.setBackground(new java.awt.Color(0, 51, 102));
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("GESTIONAR VOTANTE");
-        jButton5.setBorder(null);
+        jBtnVotante.setBackground(new java.awt.Color(0, 51, 102));
+        jBtnVotante.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnVotante.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnVotante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/voto.png"))); // NOI18N
+        jBtnVotante.setText("GESTIONAR VOTANTE");
+        jBtnVotante.setBorder(null);
+        jBtnVotante.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnVotante.setIconTextGap(75);
+        jBtnVotante.setRolloverEnabled(false);
 
-        jButton6.setBackground(new java.awt.Color(0, 51, 102));
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("GESTIONAR PARTIDO POLITICO");
-        jButton6.setBorder(null);
+        jBtnPartido.setBackground(new java.awt.Color(0, 51, 102));
+        jBtnPartido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnPartido.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnPartido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bandera.png"))); // NOI18N
+        jBtnPartido.setText("GESTIONAR PARTIDO POLITICO");
+        jBtnPartido.setBorder(null);
+        jBtnPartido.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnPartido.setIconTextGap(10);
+        jBtnPartido.setRolloverEnabled(false);
 
-        jButton7.setBackground(new java.awt.Color(0, 51, 102));
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("GESTIONAR JRV");
-        jButton7.setBorder(null);
+        jBtnJRV.setBackground(new java.awt.Color(0, 51, 102));
+        jBtnJRV.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnJRV.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnJRV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/info.png"))); // NOI18N
+        jBtnJRV.setText("GESTIONAR JRV");
+        jBtnJRV.setBorder(null);
+        jBtnJRV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnJRV.setIconTextGap(110);
+        jBtnJRV.setRolloverEnabled(false);
 
-        jButton8.setBackground(new java.awt.Color(0, 51, 102));
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("GESTIONAR ENCARGADO");
-        jButton8.setBorder(null);
+        jBtnEncargado.setBackground(new java.awt.Color(0, 51, 102));
+        jBtnEncargado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnEncargado.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnEncargado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empleado.png"))); // NOI18N
+        jBtnEncargado.setText("GESTIONAR ENCARGADO");
+        jBtnEncargado.setBorder(null);
+        jBtnEncargado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnEncargado.setIconTextGap(55);
+        jBtnEncargado.setRolloverEnabled(false);
 
         jBtnMunicipio.setBackground(new java.awt.Color(0, 51, 102));
         jBtnMunicipio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jBtnMunicipio.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnMunicipio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pueblo.png"))); // NOI18N
         jBtnMunicipio.setText("GESTIONAR MUNICIPIO");
         jBtnMunicipio.setBorder(null);
+        jBtnMunicipio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnMunicipio.setIconTextGap(64);
+        jBtnMunicipio.setRolloverEnabled(false);
 
         jBtnDepartamento.setBackground(new java.awt.Color(0, 51, 102));
         jBtnDepartamento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jBtnDepartamento.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnDepartamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/europa.png"))); // NOI18N
         jBtnDepartamento.setText("GESTIONAR DEPARTAMENTO");
         jBtnDepartamento.setBorder(null);
+        jBtnDepartamento.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnDepartamento.setIconTextGap(30);
+        jBtnDepartamento.setRolloverEnabled(false);
 
         jBtnDelegado.setBackground(new java.awt.Color(0, 51, 102));
         jBtnDelegado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jBtnDelegado.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnDelegado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profesional.png"))); // NOI18N
         jBtnDelegado.setText("GESTIONAR DELEGADO ");
         jBtnDelegado.setBorder(null);
+        jBtnDelegado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnDelegado.setIconTextGap(59);
+        jBtnDelegado.setInheritsPopupMenu(true);
+        jBtnDelegado.setRolloverEnabled(false);
 
         jBtnCentro.setBackground(new java.awt.Color(0, 51, 102));
         jBtnCentro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jBtnCentro.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnCentro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/casa.png"))); // NOI18N
         jBtnCentro.setText("GESTIONAR CENTRO DE VOTACION");
         jBtnCentro.setBorder(null);
+        jBtnCentro.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnCentro.setMaximumSize(new java.awt.Dimension(181, 15));
+        jBtnCentro.setMinimumSize(new java.awt.Dimension(181, 15));
+        jBtnCentro.setRolloverEnabled(false);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (1).png"))); // NOI18N
 
@@ -138,42 +189,59 @@ public class FrmAdministrador extends javax.swing.JFrame {
         lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
 
+        jBtnDelegado1.setBackground(new java.awt.Color(0, 51, 102));
+        jBtnDelegado1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnDelegado1.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnDelegado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consola-ecualizador-con-tres-interruptores-en-diferentes-niveles.png"))); // NOI18N
+        jBtnDelegado1.setText("GESTIONAR TIPO CANDIDATO");
+        jBtnDelegado1.setBorder(null);
+        jBtnDelegado1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBtnDelegado1.setIconTextGap(28);
+        jBtnDelegado1.setRolloverEnabled(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 2, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBtnMunicipio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBtnDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBtnDelegado, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBtnCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBtnCentro, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                    .addComponent(jBtnDelegado1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnDepartamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(50, 50, 50))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBtnPartido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBtnJRV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBtnEncargado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jBtnCandidato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBtnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBtnUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jBtnDelegado, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jBtnVotante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBtnPeriodo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,31 +252,46 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(jBtnCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnDelegado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnDelegado1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnDelegado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnJRV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnVotante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(jBtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+        );
+
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 255));
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1116, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -217,11 +300,17 @@ public class FrmAdministrador extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1156, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -239,7 +328,10 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnCerrarMouseClicked
-        System.exit(0);
+        this.setVisible(false);
+        FrmLogin log = new FrmLogin();
+        log.setVisible(true);
+        log.pack();
     }//GEN-LAST:event_jBtnCerrarMouseClicked
 
     /**
@@ -278,18 +370,20 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtnCandidato;
     private javax.swing.JButton jBtnCentro;
     private javax.swing.JButton jBtnCerrar;
     private javax.swing.JButton jBtnDelegado;
+    private javax.swing.JButton jBtnDelegado1;
     private javax.swing.JButton jBtnDepartamento;
+    private javax.swing.JButton jBtnEncargado;
+    private javax.swing.JButton jBtnJRV;
     private javax.swing.JButton jBtnMunicipio;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jBtnPartido;
+    private javax.swing.JButton jBtnPeriodo;
+    private javax.swing.JButton jBtnUsuario;
+    private javax.swing.JButton jBtnVotante;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

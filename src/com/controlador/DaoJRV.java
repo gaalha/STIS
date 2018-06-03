@@ -18,9 +18,8 @@ public class DaoJRV extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarJRV`(?,?,?,?,?)}";
+            String sql="{CALL `insertarJRV`(null,?,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1, jrv.getCodjrv());
             pre.setInt(2,jrv.getNumerojrv());
             pre.setInt(3, jrv.getCentrovotacion().getCodcentrovotacion());
             pre.setInt(4, jrv.getEncargado().getCodencargado());

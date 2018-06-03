@@ -18,9 +18,8 @@ public class DaoPeriodo extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarPerido`(?,?,?,?)}";
+            String sql="{CALL `insertarPerido`(null,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1, per.getCodperiodo());
             pre.setString(2,per.getPeriodo());
             pre.setString(3, per.getDescripcion());
             pre.setInt(4, per.getActivo());

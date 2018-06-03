@@ -7,37 +7,41 @@ package com.modelo;
  */
 public class Candidato {
     
-    private int codigocandidato; 
-    private String nombre; 
-    private String titulo; 
-    private int codigopartidopolitico;  
-    private int codigodetcandidato;  
+    private int codcandidato;
+    private String candidato;
+    private String titulo;
+    private TipoCandidato tipo;
+    private PartidoPolitico partido;
+    private byte[] fotoCandidato;
+    private int activo;
 
     public Candidato() {
     }
 
-    public Candidato(int codigocandidato, String nombre, String titulo, int codigopartidopolitico, int codigodetcandidato) {
-        this.codigocandidato = codigocandidato;
-        this.nombre = nombre;
+    public Candidato(int codcandidato, String candidato, String titulo, TipoCandidato tipo, PartidoPolitico partido, byte[] fotoCandidato, int activo) {
+        this.codcandidato = codcandidato;
+        this.candidato = candidato;
         this.titulo = titulo;
-        this.codigopartidopolitico = codigopartidopolitico;
-        this.codigodetcandidato = codigodetcandidato;
+        this.tipo = tipo;
+        this.partido = partido;
+        this.fotoCandidato = fotoCandidato;
+        this.activo = activo;
     }
 
-    public int getCodigocandidato() {
-        return codigocandidato;
+    public int getCodcandidato() {
+        return codcandidato;
     }
 
-    public void setCodigocandidato(int codigocandidato) {
-        this.codigocandidato = codigocandidato;
+    public void setCodcandidato(int codcandidato) {
+        this.codcandidato = codcandidato;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getCandidato() {
+        return candidato;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCandidato(String candidato) {
+        this.candidato = candidato;
     }
 
     public String getTitulo() {
@@ -48,23 +52,37 @@ public class Candidato {
         this.titulo = titulo;
     }
 
-    public int getCodigopartidopolitico() {
-        return codigopartidopolitico;
+    public TipoCandidato getTipo() {
+        return tipo;
     }
 
-    public void setCodigopartidopolitico(int codigopartidopolitico) {
-        this.codigopartidopolitico = codigopartidopolitico;
+    public void setTipo(TipoCandidato tipo) {
+        this.tipo = tipo;
     }
 
-    public int getCodigodetcandidato() {
-        return codigodetcandidato;
+    public PartidoPolitico getPartido() {
+        return partido;
     }
 
-    public void setCodigodetcandidato(int codigodetcandidato) {
-        this.codigodetcandidato = codigodetcandidato;
+    public void setPartido(PartidoPolitico partido) {
+        this.partido = partido;
     }
-    
-    
+
+    public byte[] getFotoCandidato() {
+        return fotoCandidato;
+    }
+
+    public void setFotoCandidato(byte[] fotoCandidato) {
+        this.fotoCandidato = fotoCandidato;
+    }
+
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }
 
     
 }

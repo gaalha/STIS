@@ -18,9 +18,8 @@ public class DaoCentroVotacion extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarCentro`(?,?,?,?)}";
+            String sql="{CALL `insertarCentro`(null,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1, centro.getCodcentrovotacion());
             pre.setString(2,centro.getCentrovotacion());
             pre.setInt(3, centro.getMunicipio().getCodmunicipio());
             pre.setInt(4, centro.getActivo());

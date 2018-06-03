@@ -18,9 +18,8 @@ public class DaoDepartamento extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarDepartamento`(?,?,?)}";
+            String sql="{CALL `insertarDepartamento`(null,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1, depa.getCoddepartamento());
             pre.setString(2,depa.getDepartamento());
             pre.setInt(3, depa.getActivo());
             pre.executeUpdate();

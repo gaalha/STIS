@@ -18,9 +18,8 @@ public class DaoVotante extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarVotante`(?,?,?,?,?,?,?,?,?,?)}";
+            String sql="{CALL `insertarVotante`(null,?,?,?,?,?,?,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1, vot.getCodvotante());
             pre.setString(2, vot.getVotante());
             pre.setString(3, vot.getDui());
             pre.setString(4, vot.getNombremadre());
