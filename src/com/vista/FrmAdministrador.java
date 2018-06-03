@@ -46,6 +46,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         jBtnDelegado1 = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        panel = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -64,7 +65,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnPeriodo.setBorder(null);
         jBtnPeriodo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnPeriodo.setIconTextGap(75);
-        jBtnPeriodo.setRolloverEnabled(false);
 
         jBtnCerrar.setBackground(new java.awt.Color(0, 51, 102));
         jBtnCerrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -73,7 +73,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnCerrar.setText("CERRAR SESION");
         jBtnCerrar.setBorder(null);
         jBtnCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jBtnCerrar.setRolloverEnabled(false);
         jBtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnCerrarMouseClicked(evt);
@@ -88,7 +87,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnUsuario.setBorder(null);
         jBtnUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnUsuario.setIconTextGap(75);
-        jBtnUsuario.setRolloverEnabled(false);
 
         jBtnCandidato.setBackground(new java.awt.Color(0, 51, 102));
         jBtnCandidato.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -98,7 +96,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnCandidato.setBorder(null);
         jBtnCandidato.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnCandidato.setIconTextGap(58);
-        jBtnCandidato.setRolloverEnabled(false);
 
         jBtnVotante.setBackground(new java.awt.Color(0, 51, 102));
         jBtnVotante.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -108,7 +105,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnVotante.setBorder(null);
         jBtnVotante.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnVotante.setIconTextGap(75);
-        jBtnVotante.setRolloverEnabled(false);
 
         jBtnPartido.setBackground(new java.awt.Color(0, 51, 102));
         jBtnPartido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -118,7 +114,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnPartido.setBorder(null);
         jBtnPartido.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnPartido.setIconTextGap(10);
-        jBtnPartido.setRolloverEnabled(false);
 
         jBtnJRV.setBackground(new java.awt.Color(0, 51, 102));
         jBtnJRV.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -128,7 +123,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnJRV.setBorder(null);
         jBtnJRV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnJRV.setIconTextGap(110);
-        jBtnJRV.setRolloverEnabled(false);
 
         jBtnEncargado.setBackground(new java.awt.Color(0, 51, 102));
         jBtnEncargado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -138,7 +132,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnEncargado.setBorder(null);
         jBtnEncargado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnEncargado.setIconTextGap(55);
-        jBtnEncargado.setRolloverEnabled(false);
 
         jBtnMunicipio.setBackground(new java.awt.Color(0, 51, 102));
         jBtnMunicipio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -148,7 +141,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnMunicipio.setBorder(null);
         jBtnMunicipio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnMunicipio.setIconTextGap(64);
-        jBtnMunicipio.setRolloverEnabled(false);
 
         jBtnDepartamento.setBackground(new java.awt.Color(0, 51, 102));
         jBtnDepartamento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -158,7 +150,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnDepartamento.setBorder(null);
         jBtnDepartamento.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnDepartamento.setIconTextGap(30);
-        jBtnDepartamento.setRolloverEnabled(false);
+        jBtnDepartamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnDepartamentoActionPerformed(evt);
+            }
+        });
 
         jBtnDelegado.setBackground(new java.awt.Color(0, 51, 102));
         jBtnDelegado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -169,7 +165,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnDelegado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnDelegado.setIconTextGap(59);
         jBtnDelegado.setInheritsPopupMenu(true);
-        jBtnDelegado.setRolloverEnabled(false);
 
         jBtnCentro.setBackground(new java.awt.Color(0, 51, 102));
         jBtnCentro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -180,7 +175,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnCentro.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnCentro.setMaximumSize(new java.awt.Dimension(181, 15));
         jBtnCentro.setMinimumSize(new java.awt.Dimension(181, 15));
-        jBtnCentro.setRolloverEnabled(false);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (1).png"))); // NOI18N
 
@@ -197,7 +191,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnDelegado1.setBorder(null);
         jBtnDelegado1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnDelegado1.setIconTextGap(28);
-        jBtnDelegado1.setRolloverEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -283,15 +276,30 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
         jDesktopPane1.setBackground(new java.awt.Color(204, 204, 255));
 
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1110, Short.MAX_VALUE)
+        );
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jDesktopPane1.setLayer(panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1116, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(panel)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -333,6 +341,13 @@ public class FrmAdministrador extends javax.swing.JFrame {
         log.setVisible(true);
         log.pack();
     }//GEN-LAST:event_jBtnCerrarMouseClicked
+
+    private void jBtnDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDepartamentoActionPerformed
+        // TODO add your handling code here:
+        FrmDepartamento frma = new FrmDepartamento();
+        this.panel.add(frma);
+        frma.show();
+    }//GEN-LAST:event_jBtnDepartamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -389,5 +404,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public static javax.swing.JLabel lblUsuario;
+    private javax.swing.JDesktopPane panel;
     // End of variables declaration//GEN-END:variables
 }
