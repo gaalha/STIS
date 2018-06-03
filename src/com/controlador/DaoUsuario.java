@@ -18,12 +18,14 @@ public class DaoUsuario extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarUsuario` (null,?,?,?,?)}";
+            String sql="{CALL `insertarUsuario` (null,?,?,?,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setString(2,us.getUser());
-            pre.setString(3, us.getClave());
-            pre.setString(4,us.getTipousuario());
-            pre.setInt(5, us.getActivo());
+            pre.setString(2, us.getNombre_usuario());
+            pre.setString(3, us.getApellido_usuario());
+            pre.setString(4,us.getUser());
+            pre.setString(5, us.getClave());
+            pre.setString(6,us.getTipousuario());
+            pre.setInt(7, us.getActivo());
             pre.executeUpdate();
             
         } catch (Exception e) {
@@ -51,6 +53,8 @@ public class DaoUsuario extends Conexion{
             {
                Usuario usu=new Usuario();
                usu.setCodusuario(res.getInt("id_usuario"));
+               usu.setNombre_usuario(res.getString("nombre_usuario"));
+               usu.setApellido_usuario(res.getString("apellido_usuario"));
                usu.setUser(res.getString("usuario"));
                usu.setClave(res.getString("clave"));
                usu.setTipousuario(res.getString("tipo_usuario"));
@@ -71,13 +75,15 @@ public class DaoUsuario extends Conexion{
         try 
         {
             this.conectar();
-            String sql="{CALL `modificarUsuario` (?,?,?,?,?)}";
+            String sql="{CALL `modificarUsuario` (?,?,?,?,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setInt(1,us.getCodusuario());
-            pre.setString(2,us.getUser());
-            pre.setString(3, us.getClave());
-            pre.setString(4,us.getTipousuario());
-            pre.setInt(5, us.getActivo());
+            pre.setInt(1, us.getCodusuario());
+            pre.setString(2, us.getNombre_usuario());
+            pre.setString(3, us.getApellido_usuario());
+            pre.setString(4,us.getUser());
+            pre.setString(5, us.getClave());
+            pre.setString(6,us.getTipousuario());
+            pre.setInt(7, us.getActivo());
             pre.executeUpdate();
             
         } catch (Exception e) {

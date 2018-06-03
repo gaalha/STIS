@@ -39,7 +39,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnEncargado = new javax.swing.JButton();
         jBtnMunicipio = new javax.swing.JButton();
         jBtnDepartamento = new javax.swing.JButton();
-        jBtnDelegado = new javax.swing.JButton();
         jBtnCentro = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -160,17 +159,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnDepartamento.setIconTextGap(30);
         jBtnDepartamento.setRolloverEnabled(false);
 
-        jBtnDelegado.setBackground(new java.awt.Color(0, 51, 102));
-        jBtnDelegado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jBtnDelegado.setForeground(new java.awt.Color(255, 255, 255));
-        jBtnDelegado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profesional.png"))); // NOI18N
-        jBtnDelegado.setText("GESTIONAR DELEGADO ");
-        jBtnDelegado.setBorder(null);
-        jBtnDelegado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jBtnDelegado.setIconTextGap(59);
-        jBtnDelegado.setInheritsPopupMenu(true);
-        jBtnDelegado.setRolloverEnabled(false);
-
         jBtnCentro.setBackground(new java.awt.Color(0, 51, 102));
         jBtnCentro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jBtnCentro.setForeground(new java.awt.Color(255, 255, 255));
@@ -226,7 +214,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jBtnPartido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBtnJRV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBtnJRV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                             .addComponent(jBtnEncargado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -236,9 +224,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jBtnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jBtnUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jBtnDelegado, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jBtnVotante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jBtnPeriodo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
@@ -252,13 +237,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(49, 49, 49)
                 .addComponent(jBtnCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBtnDelegado1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnDelegado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBtnDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBtnMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,7 +356,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton jBtnCandidato;
     private javax.swing.JButton jBtnCentro;
     private javax.swing.JButton jBtnCerrar;
-    private javax.swing.JButton jBtnDelegado;
     private javax.swing.JButton jBtnDelegado1;
     private javax.swing.JButton jBtnDepartamento;
     private javax.swing.JButton jBtnEncargado;
