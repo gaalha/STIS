@@ -106,7 +106,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jBtnPartido" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jBtnJRV" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jBtnJRV" alignment="1" pref="260" max="32767" attributes="0"/>
                                   <Component id="jBtnEncargado" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -119,10 +119,6 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jBtnCerrar" alignment="1" max="32767" attributes="0"/>
                                   <Component id="jBtnUsuario" alignment="1" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jBtnDelegado" min="-2" pref="260" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
                                   <Component id="jBtnVotante" max="32767" attributes="0"/>
                                   <Component id="jBtnPeriodo" alignment="1" max="32767" attributes="0"/>
                               </Group>
@@ -142,13 +138,11 @@
                           <Component id="jLabel1" max="32767" attributes="0"/>
                           <Component id="lblUsuario" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="jBtnCentro" min="-2" pref="39" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jBtnDelegado1" min="-2" pref="35" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jBtnDelegado" min="-2" pref="35" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jBtnDepartamento" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jBtnMunicipio" min="-2" pref="35" max="-2" attributes="0"/>
@@ -398,29 +392,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnDepartamentoActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jBtnDelegado">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="33" red="0" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/profesional.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="GESTIONAR DELEGADO "/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
-                <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="59"/>
-                <Property name="inheritsPopupMenu" type="boolean" value="true"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jBtnCentro">
               <Properties>
