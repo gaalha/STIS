@@ -16,21 +16,19 @@ import java.util.List;
  */
 public class DaoMunicipio extends Conexion{
     public void insertarMunicipio(Municipio mu) throws Exception{
-    try 
-        {
+    try {
             this.conectar();
-            String sql="{CALL `insertarMunicipio`(null,?,?,?)}";
-            PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setString(2,mu.getMunicipio());
-            pre.setInt(3, mu.getDepartamento().getCoddepartamento());
-            pre.setInt(4, mu.getActivo());
+            String sql="{CALL `iMunicipio`(?, ?)}";
+            PreparedStatement pre = this.getCon().prepareStatement(sql);
+            pre.setString(1, mu.getMunicipio());
+            pre.setInt(2, mu.getDepartamento().getCoddepartamento());
+            //pre.setInt(3, mu.getActivo());
             pre.executeUpdate();
             
         } catch (Exception e) {
             throw e;
         }
-        finally
-        {
+        finally{
             this.desconectar();
         }
     }
@@ -42,9 +40,9 @@ public class DaoMunicipio extends Conexion{
         try {
             c.conectar();
             PreparedStatement pre = c.getCon().prepareCall(sql);
-            rs=pre.executeQuery();
+            rs = pre.executeQuery();
             while(rs.next()){
-                valor=rs.getInt(1);
+                valor = rs.getInt(1);
             }
             c.desconectar();
         } catch (Exception e) {

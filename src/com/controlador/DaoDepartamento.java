@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author carlos franco
+ * @author Edgar Mejía
  */
 public class DaoDepartamento extends Conexion{
     public void insertarDepartamento(Departamento depa) throws Exception{
@@ -27,8 +27,7 @@ public class DaoDepartamento extends Conexion{
         } catch (Exception e) {
             throw e;
         }
-        finally
-        {
+        finally{
             this.desconectar();
         }
     }

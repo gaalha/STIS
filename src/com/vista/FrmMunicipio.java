@@ -18,10 +18,9 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author carlos franco
+ * @author Edgar Mejía
  */
 public class FrmMunicipio extends javax.swing.JInternalFrame {
-
     /**
      * Creates new form FrmMunicipio
      */
@@ -30,38 +29,36 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
         tablaE();
         jCbxDepartamentos.removeAllItems();
         llenarCombo();
-        
+        this.jTXTCodMunicipio.setVisible(false);
     }
     
     DaoMunicipio daom = new DaoMunicipio();
     Municipio mun = new Municipio();
-    //<editor-fold defaultstate="collapsed" desc="llenarComboBox">
+    
     public void llenarCombo(){
         Conexion c = new Conexion();
         ResultSet res;
         try {
             c.conectar();
-            String sql="select nombre from Departamento";
+            String sql = "SELECT nombre_departamento FROM Departamento WHERE activo = 1";
             
             PreparedStatement pre = c.getCon().prepareCall(sql);
-            res=pre.executeQuery();
+            res = pre.executeQuery();
             
             while(res.next()){
-                jCbxDepartamentos.addItem(res.getString("nombre"));
+                jCbxDepartamentos.addItem(res.getString("nombre_departamento"));
             }
         } catch (Exception e) {
             e.toString();
         }
     }
-//</editor-fold>
     
     public void tablaE(){
-        String [] columnas={"id", "Municipio"} ;
+        String [] columnas = {"id", "Municipio"} ;
         Object[] obj = new Object[2];
         DefaultTableModel tabla=new DefaultTableModel(null, columnas);
         List ls;
-        try 
-        {
+        try {
            ls = daom.mostrarMunicipio();
             for(int i=0;i<ls.size();i++){
                 mun = (Municipio)ls.get(i);
@@ -70,27 +67,24 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
                 tabla.addRow(obj);
             }
         
-            ls=daom.mostrarMunicipio();
+            ls = daom.mostrarMunicipio();
             this.jTableMunicipio.setModel(tabla);
         } 
-        catch (Exception e) 
-        {
+        catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al mostrar datos" + e.toString());
         }
     }
 
-    //<editor-fold defaultstate="collapsed" desc="insertarMunicipio">
     public void insertar(){
-        try 
-        {
+        try {
             //Municipio mu= new Municipio();
-            Departamento d= new Departamento();
+            Departamento d = new Departamento();
             
-           mun.setCodmunicipio(Integer.parseInt(this.jTXTCodMunicipio.getText().trim()));
+           //mun.setCodmunicipio(Integer.parseInt(this.jTXTCodMunicipio.getText().trim()));
            mun.setMunicipio(this.jTXTNombre.getText().trim());
-           String depa= jCbxDepartamentos.getSelectedItem().toString();
-           String sql="select id_departamento from Departamento where nombre='"+depa+"'";
-           int idDepa=daom.valorInteger(sql);
+           String depa = jCbxDepartamentos.getSelectedItem().toString();
+           String sql = "SELECT id_departamento FROM Departamento WHERE nombre_departamento = '" + depa + "'";
+           int idDepa = daom.valorInteger(sql);
            d.setCoddepartamento(idDepa);
            
            d.setDepartamento(depa);
@@ -98,9 +92,9 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
            
            
            daom.insertarMunicipio(mun);
-           JOptionPane.showMessageDialog(null,"Datos Insertado Correctamente");
-           /**tablaE();
-           limpiar();**/
+           JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
+           tablaE();
+           //limpiar();
         } catch (Exception e) 
         {
             JOptionPane.showMessageDialog(this,e.toString(),"ERROR", JOptionPane.ERROR_MESSAGE);
