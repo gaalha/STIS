@@ -7,7 +7,7 @@
 ## Procedimientos almacenados: ##
 
 ```sql
-// MUNICIPIO:
+/* DEPARTAMENTO: */
 CREATE PROCEDURE `mostrarDepartamento` ()
 BEGIN
 	SELECT *
@@ -40,27 +40,23 @@ BEGIN
 END
 ```
 
-```js
-// Settings
-"draw_white_space": "all",
-"fade_fold_buttons": false,
-"font_face": "Fira Code Light",
-"font_size": 11,
-"theme_accent_numix": true,
-"theme_autocomplete_item_selected_colored": true,
-"theme_dropdown_atomized": true,
-"theme_find_panel_materialized": true,
-"theme_grid_border_size_xs": true,
-"theme_popup_border_visible": true,
-"theme_quick_panel_border_visible": true,
-"theme_quick_panel_item_selected_colored": true,
-"theme_scrollbar_colored": true,
-"theme_scrollbar_line": true,
-"theme_sidebar_disclosure": true,
-"theme_tab_selected_transparent": true,
-"theme_tab_selected_underlined": true,
-"theme_tab_size_lg": true,
-"theme_unified": true,
+```sql
+/* MUNICIPIO: */
+CREATE PROCEDURE `mostrarMunicipio` ()
+BEGIN
+	SELECT * FROM Municipio
+    	WHERE activo = 1;
+END
+
+CREATE PROCEDURE `insertarMunicipio` (
+	IN nombre_mun VARCHAR(50),
+	IN cod_dep INTEGER
+)
+BEGIN
+	INSERT INTO Municipio(id_municipio, nombre_municipio, idDepartamento, activo)
+	VALUES(null, nombre_mun, cod_dep, 1);
+END
+
 ```
 
 El sistema debe gestionar todo un proceso de elecciones de presidente de la república,
