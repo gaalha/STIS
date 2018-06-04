@@ -106,8 +106,8 @@ public class DaoMunicipio extends Conexion{
             while(res.next())
             {
                Departamento dep = new Departamento();
-               dep.setCoddepartamento(res.getInt("id_departamento"));
-               dep.setDepartamento(res.getString("nombre_departamento"));
+               dep.setCoddepartamento(res.getInt("idDepartamento"));
+               //dep.setDepartamento(res.getString("nombre_departamento"));
                Municipio mu=new Municipio();
                mu.setCodmunicipio(res.getInt("id_municipio"));
                mu.setMunicipio(res.getString("nombre_municipio"));

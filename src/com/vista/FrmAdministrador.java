@@ -140,6 +140,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnMunicipio.setBorder(null);
         jBtnMunicipio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnMunicipio.setIconTextGap(64);
+        jBtnMunicipio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnMunicipioActionPerformed(evt);
+            }
+        });
 
         jBtnDepartamento.setBackground(new java.awt.Color(0, 51, 102));
         jBtnDepartamento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -332,6 +337,13 @@ public class FrmAdministrador extends javax.swing.JFrame {
         this.panel.add(frma);
         frma.show();
     }//GEN-LAST:event_jBtnDepartamentoActionPerformed
+
+    private void jBtnMunicipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMunicipioActionPerformed
+        // TODO add your handling code here:
+        FrmMunicipio frmm = new FrmMunicipio();
+        this.panel.add(frmm);
+        frmm.show();
+    }//GEN-LAST:event_jBtnMunicipioActionPerformed
 
     /**
      * @param args the command line arguments

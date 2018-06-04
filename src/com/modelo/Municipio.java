@@ -7,7 +7,7 @@ package com.modelo;
  */
 public class Municipio {
     
-    private int codmunicipio;
+    private int codMunicipio;
     private String municipio;
     private Departamento departamento;
     private int activo;
@@ -15,19 +15,19 @@ public class Municipio {
     public Municipio() {
     }
 
-    public Municipio(int codmunicipio, String municipio, Departamento departamento, int activo) {
-        this.codmunicipio = codmunicipio;
+    public Municipio(int codMunicipio, String municipio, Departamento departamento, int activo) {
+        this.codMunicipio = codMunicipio;
         this.municipio = municipio;
         this.departamento = departamento;
         this.activo = activo;
     }
 
     public int getCodmunicipio() {
-        return codmunicipio;
+        return codMunicipio;
     }
 
     public void setCodmunicipio(int codmunicipio) {
-        this.codmunicipio = codmunicipio;
+        this.codMunicipio = codmunicipio;
     }
 
     public String getMunicipio() {

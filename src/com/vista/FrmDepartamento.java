@@ -232,8 +232,7 @@ public class FrmDepartamento extends javax.swing.JInternalFrame {
                     JOptionPane.ERROR_MESSAGE);
         } 
     }
-    public void tablaE()
-    {
+    public void tablaE(){
         String [] columnas={"CodigoDepartamento","NombreDepartamento"} ;
         Object[] obj=new Object[2];
         DefaultTableModel tabla=new DefaultTableModel(null,columnas);
