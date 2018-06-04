@@ -57,6 +57,16 @@ BEGIN
 	VALUES(null, nombre_mun, cod_dep, 1);
 END
 
+CREATE PROCEDURE `innerMunicipio` ()
+BEGIN
+	SELECT id_municipio, nombre_municipio, idDepartamento, mu.activo AS activo, dep.nombre_departamento AS departamento
+	FROM Municipio AS mu
+	INNER JOIN Departamento AS dep
+	ON mu.idDepartamento = dep.id_departamento
+	AND mu.activo = 1;
+END
+
+
 ```
 
 El sistema debe gestionar todo un proceso de elecciones de presidente de la república,
