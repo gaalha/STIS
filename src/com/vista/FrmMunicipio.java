@@ -34,6 +34,13 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
     
     DaoMunicipio daom = new DaoMunicipio();
     Municipio mun = new Municipio();
+    Departamento dep = new Departamento();
+    
+    public void llenarTabla(){
+        int fila = this.jTableMunicipio.getSelectedRow();
+        this.jTXTCodMunicipio.setText(String.valueOf(this.jTableMunicipio.getValueAt(fila, 0)));
+        this.jTXTNombre.setText(String.valueOf(this.jTableMunicipio.getValueAt(fila, 1)));
+    }
     
     public void llenarCombo(){
         Conexion c = new Conexion();
@@ -54,19 +61,19 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
     }
     
     public void tablaE(){
-        String [] columnas = {"id", "Municipio"} ;
-        Object[] obj = new Object[2];
-        DefaultTableModel tabla=new DefaultTableModel(null, columnas);
+        String [] columnas = {"id", "Municipio", "Departamento"} ;
+        Object[] obj = new Object[3];
+        DefaultTableModel tabla = new DefaultTableModel(null, columnas);
         List ls;
         try {
            ls = daom.mostrarMunicipio();
-            for(int i=0;i<ls.size();i++){
+            for(int i=0; i<ls.size(); i++){
                 mun = (Municipio)ls.get(i);
                 obj[0] = mun.getCodmunicipio();
                 obj[1] = mun.getMunicipio();
+                obj[2] = dep.getDepartamento();
                 tabla.addRow(obj);
             }
-        
             ls = daom.mostrarMunicipio();
             this.jTableMunicipio.setModel(tabla);
         } 
@@ -90,15 +97,20 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
            d.setDepartamento(depa);
            mun.setDepartamento(d);
            
-           
            daom.insertarMunicipio(mun);
            JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
            tablaE();
-           //limpiar();
+           limpiar();
         } catch (Exception e) 
         {
             JOptionPane.showMessageDialog(this,e.toString(),"ERROR", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    public void limpiar(){
+        this.jTXTCodMunicipio.setText("");
+        this.jTXTNombre.setText("");
+        this.jCbxDepartamentos.setSelectedIndex(0);
     }
     
 //</editor-fold>
@@ -122,6 +134,7 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableMunicipio = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -154,7 +167,19 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableMunicipio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMunicipioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableMunicipio);
+
+        jButton1.setText("Limpiar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,23 +196,23 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
                             .addComponent(jTXTCodMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTXTNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                    .addComponent(jCbxDepartamentos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BtnInsertar)
-                                .addGap(35, 35, 35)
-                                .addComponent(jButton2)
-                                .addGap(44, 44, 44)
-                                .addComponent(jButton3)))))
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTXTNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                            .addComponent(jCbxDepartamentos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(BtnInsertar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -206,11 +231,11 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addComponent(jCbxDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(BtnInsertar)
-                        .addComponent(jButton3))
-                    .addComponent(jButton2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(BtnInsertar)
+                    .addComponent(jButton3)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -220,12 +245,27 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnInsertarMouseClicked
-        insertar();
+        if(this.jTXTNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos.");
+        }else{
+            insertar();
+        }
     }//GEN-LAST:event_BtnInsertarMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        limpiar();
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jTableMunicipioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMunicipioMouseClicked
+        // TODO add your handling code here:
+        llenarTabla();
+    }//GEN-LAST:event_jTableMunicipioMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnInsertar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jCbxDepartamentos;

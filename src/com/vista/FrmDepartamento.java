@@ -152,11 +152,8 @@ public class FrmDepartamento extends javax.swing.JInternalFrame {
     DaoDepartamento daod = new DaoDepartamento();
     Departamento dep = new Departamento();
 
-    public void insertar()
-    {
-        
-        try 
-        {
+    public void insertar(){
+        try {
            //dep.setCoddepartamento(Integer.parseInt(this.jTXTcodigoDepartamento.getText().trim()));
            dep.setDepartamento(this.jTXTDepartamento.getText().trim());
            daod.insertarDepartamento(dep);
@@ -169,28 +166,24 @@ public class FrmDepartamento extends javax.swing.JInternalFrame {
         }
     }
     
-    public void llenarTabla()
- {
-      int fila=this.jTableDepartamento.getSelectedRow();
-      this.jTXTcodigoDepartamento.setText(String.valueOf(this.jTableDepartamento.getValueAt(fila, 0)));
-      this.jTXTDepartamento.setText(String.valueOf(this.jTableDepartamento.getValueAt(fila, 1)));
- }
-     public void limpiar()
-    {
-      this.jTXTcodigoDepartamento.setText("");
-      this.jTXTDepartamento.setText("");
+    public void llenarTabla(){
+        int fila=this.jTableDepartamento.getSelectedRow();
+        this.jTXTcodigoDepartamento.setText(String.valueOf(this.jTableDepartamento.getValueAt(fila, 0)));
+        this.jTXTDepartamento.setText(String.valueOf(this.jTableDepartamento.getValueAt(fila, 1)));
     }
     
-     public void modificar()
-    {
-         try 
-        {
+    public void limpiar(){
+        this.jTXTcodigoDepartamento.setText("");
+        this.jTXTDepartamento.setText("");
+    }
+    
+    public void modificar(){
+        try {
             dep.setCoddepartamento(Integer.parseInt(this.jTXTcodigoDepartamento.getText().trim()));
             dep.setDepartamento(this.jTXTDepartamento.getText().trim());
             int SiONo=JOptionPane.showConfirmDialog(this, "Desea modificar el Departamento",
                     "Modificar Departamento",JOptionPane.YES_NO_OPTION);
-            if(SiONo==0)
-            {
+            if(SiONo==0){
                 daod.modificarDepartamento(dep);
                 JOptionPane.showMessageDialog(rootPane, "Departamento modificado con exito", 
                         "Confirmación",
@@ -198,36 +191,29 @@ public class FrmDepartamento extends javax.swing.JInternalFrame {
                 tablaE();
                 limpiar();
             }
-            else
-            {
+            else{
                 limpiar();
             }
-        } catch (Exception ex) {
+        }catch (Exception ex) {
            ex.printStackTrace();
         }
     }
-    public void eliminar()
-    {
-
-        try 
-        {
+    public void eliminar(){
+        try {
             dep.setCoddepartamento(Integer.parseInt(this.jTXTcodigoDepartamento.getText()));
             int SiONo=JOptionPane.showConfirmDialog(this, "Desea eliminar el Departamento",
                     "Eliminar Departamento",JOptionPane.YES_NO_OPTION);
-            if(SiONo==0)
-            {
+            if(SiONo==0){
                 daod.eliminarDepartamento(dep);
                 JOptionPane.showMessageDialog(rootPane,"Eliminado con exito" , "Confirmación",
                         JOptionPane.INFORMATION_MESSAGE);
                 tablaE();
                 limpiar();
-            }
-            else
-            {
+            }else{
                 limpiar();
             }
             
-        } catch (Exception e) {
+        } catch (Exception e){
             JOptionPane.showMessageDialog(rootPane, e.toString(), "Error",
                     JOptionPane.ERROR_MESSAGE);
         } 
@@ -237,28 +223,23 @@ public class FrmDepartamento extends javax.swing.JInternalFrame {
         Object[] obj=new Object[2];
         DefaultTableModel tabla=new DefaultTableModel(null,columnas);
         List ls;
-        try 
-        {
+        try{
            ls =daod.mostrarDepartamento();
-            for(int i=0;i<ls.size();i++)
-            {   dep=(Departamento)ls.get(i);
-                obj[0]=dep.getCoddepartamento();
-                obj[1]=dep.getDepartamento();
+            for(int i=0;i<ls.size();i++){
+                dep = (Departamento)ls.get(i);
+                obj[0] = dep.getCoddepartamento();
+                obj[1] = dep.getDepartamento();
                 tabla.addRow(obj);
             }
         
-            ls=daod.mostrarDepartamento();
+            ls = daod.mostrarDepartamento();
             this.jTableDepartamento.setModel(tabla);
         } 
-        catch (Exception e) 
-        {
+        catch (Exception e){
             JOptionPane.showMessageDialog(this, "Error al mostrar datos" + e.toString());
         }
     }
     
-    public void enableButtons(){
-        this.BtnIngresar.setEnabled(true);
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnEliminar;
     private javax.swing.JButton BtnIngresar;
