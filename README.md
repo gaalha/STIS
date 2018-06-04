@@ -6,17 +6,14 @@
 
 ## Procedimientos almacenados: ##
 
-The screenshot above shows next options in action:
-
-MUNICIPIO:
-```
+```sql
+// MUNICIPIO:
 CREATE PROCEDURE `mostrarDepartamento` ()
 BEGIN
 	SELECT *
 	FROM Departamento
 	WHERE activo = 1;
 END
-
 
 CREATE PROCEDURE `insertarDepartamento` (IN nombre VARCHAR(50))
 BEGIN
