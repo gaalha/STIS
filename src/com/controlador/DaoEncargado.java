@@ -18,11 +18,10 @@ public class DaoEncargado extends Conexion{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarEncargado`(null,?,?,?)}";
+            String sql="{CALL `insertarEncargado`(?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setString(2,enc.getEncargado());
-            pre.setString(3, enc.getDui());
-            pre.setInt(4, enc.getActivo());
+            pre.setString(1,enc.getEncargado());
+            pre.setString(2, enc.getDui());
             pre.executeUpdate();
             
         } catch (Exception e) {

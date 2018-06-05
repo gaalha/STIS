@@ -8,13 +8,15 @@ package com.modelo;
 public class TipoCandidato {
     private int codtipo;
     private String tipocandidato;
+    private int activo;
 
     public TipoCandidato() {
     }
 
-    public TipoCandidato(int codtipo, String tipocandidato) {
+    public TipoCandidato(int codtipo, String tipocandidato, int activo) {
         this.codtipo = codtipo;
         this.tipocandidato = tipocandidato;
+        this.activo = activo;
     }
 
     public int getCodtipo() {
@@ -33,5 +35,14 @@ public class TipoCandidato {
         this.tipocandidato = tipocandidato;
     }
 
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }
+
+    
     
 }

@@ -14,18 +14,18 @@ import java.util.List;
  * @author carlos franco
  */
 public class DaoUsuario extends Conexion{
+    
     public void insertarUsuario(Usuario us) throws Exception{
     try 
         {
             this.conectar();
-            String sql="{CALL `insertarUsuario` (null,?,?,?,?,?,?)}";
+            String sql="{CALL `insertarUsuario` (?,?,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setString(2, us.getNombre_usuario());
-            pre.setString(3, us.getApellido_usuario());
-            pre.setString(4,us.getUser());
-            pre.setString(5, us.getClave());
-            pre.setString(6,us.getTipousuario());
-            pre.setInt(7, us.getActivo());
+            pre.setString(1, us.getNombre_usuario());
+            pre.setString(2, us.getApellido_usuario());
+            pre.setString(3,us.getUser());
+            pre.setString(4, us.getClave());
+            pre.setString(5,us.getTipousuario());
             pre.executeUpdate();
             
         } catch (Exception e) {
@@ -36,7 +36,6 @@ public class DaoUsuario extends Conexion{
             this.desconectar();
         }
     }
-    
     
     public List mostrarUsuario() throws Exception
     {
@@ -70,6 +69,7 @@ public class DaoUsuario extends Conexion{
         }
         return listausuario;
     }
+    
     public void modificarUsuario(Usuario us) throws Exception
     { 
         try 
@@ -94,6 +94,7 @@ public class DaoUsuario extends Conexion{
             this.desconectar();
         }
     }
+    
     public void eliminarUsuario(Usuario us) throws Exception
     { 
         try 

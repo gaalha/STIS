@@ -17,6 +17,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
     public FrmAdministrador() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,7 +46,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         jBtnDelegado1 = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        panel = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -64,6 +64,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnPeriodo.setBorder(null);
         jBtnPeriodo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnPeriodo.setIconTextGap(75);
+        jBtnPeriodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnPeriodoActionPerformed(evt);
+            }
+        });
 
         jBtnCerrar.setBackground(new java.awt.Color(0, 51, 102));
         jBtnCerrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -86,6 +91,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnUsuario.setBorder(null);
         jBtnUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnUsuario.setIconTextGap(75);
+        jBtnUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnUsuarioActionPerformed(evt);
+            }
+        });
 
         jBtnCandidato.setBackground(new java.awt.Color(0, 51, 102));
         jBtnCandidato.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -131,6 +141,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnEncargado.setBorder(null);
         jBtnEncargado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnEncargado.setIconTextGap(55);
+        jBtnEncargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEncargadoActionPerformed(evt);
+            }
+        });
 
         jBtnMunicipio.setBackground(new java.awt.Color(0, 51, 102));
         jBtnMunicipio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -169,6 +184,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnCentro.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnCentro.setMaximumSize(new java.awt.Dimension(181, 15));
         jBtnCentro.setMinimumSize(new java.awt.Dimension(181, 15));
+        jBtnCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCentroActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (1).png"))); // NOI18N
 
@@ -265,30 +285,15 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
         jDesktopPane1.setBackground(new java.awt.Color(204, 204, 255));
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1110, Short.MAX_VALUE)
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jDesktopPane1.setLayer(panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panel))
+            .addGap(0, 1116, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -331,19 +336,41 @@ public class FrmAdministrador extends javax.swing.JFrame {
         log.pack();
     }//GEN-LAST:event_jBtnCerrarMouseClicked
 
+    private void jBtnCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCentroActionPerformed
+       // FrmUsuario usu = new FrmUsuario();
+        //this.jDesktopPane1.add(usu);
+        //usu.setVisible(true);
+    }//GEN-LAST:event_jBtnCentroActionPerformed
+
+    private void jBtnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnUsuarioActionPerformed
+        FrmUsuario usu = new FrmUsuario();
+        this.jDesktopPane1.add(usu);
+        usu.setVisible(true);
+    }//GEN-LAST:event_jBtnUsuarioActionPerformed
+
     private void jBtnDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDepartamentoActionPerformed
-        // TODO add your handling code here:
-        FrmDepartamento frma = new FrmDepartamento();
-        this.panel.add(frma);
-        frma.show();
+        FrmDepartamento depa = new FrmDepartamento();
+        this.jDesktopPane1.add(depa);
+        depa.setVisible(true);
     }//GEN-LAST:event_jBtnDepartamentoActionPerformed
 
     private void jBtnMunicipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMunicipioActionPerformed
-        // TODO add your handling code here:
-        FrmMunicipio frmm = new FrmMunicipio();
-        this.panel.add(frmm);
-        frmm.show();
+        FrmMunicipio muni = new FrmMunicipio();
+        this.jDesktopPane1.add(muni);
+        muni.setVisible(true);
     }//GEN-LAST:event_jBtnMunicipioActionPerformed
+
+    private void jBtnPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPeriodoActionPerformed
+        FrmPeriodo peri = new FrmPeriodo();
+        this.jDesktopPane1.add(peri);
+        peri.setVisible(true);
+    }//GEN-LAST:event_jBtnPeriodoActionPerformed
+
+    private void jBtnEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEncargadoActionPerformed
+        FrmEncargado en = new FrmEncargado();
+        this.jDesktopPane1.add(en);
+        en.setVisible(true);
+    }//GEN-LAST:event_jBtnEncargadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,6 +426,5 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public static javax.swing.JLabel lblUsuario;
-    private javax.swing.JDesktopPane panel;
     // End of variables declaration//GEN-END:variables
 }

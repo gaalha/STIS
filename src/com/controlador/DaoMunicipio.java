@@ -16,13 +16,12 @@ import java.util.List;
  */
 public class DaoMunicipio extends Conexion{
     public void insertarMunicipio(Municipio mu) throws Exception{
-    try {
+        try {
             this.conectar();
-            String sql="{CALL `iMunicipio`(?, ?)}";
+            String sql="{CALL `insertarMunicipio`(?, ?)}";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
             pre.setString(1, mu.getMunicipio());
             pre.setInt(2, mu.getDepartamento().getCoddepartamento());
-            //pre.setInt(3, mu.getActivo());
             pre.executeUpdate();
             
         } catch (Exception e) {
@@ -54,11 +53,11 @@ public class DaoMunicipio extends Conexion{
     public void modificarMunicipio(Municipio mu) throws Exception{
         try {
             this.conectar();
-            String sql="{CALL `modMunicipio`(?, ?, ?)}";
+            String sql="{CALL `modificarMunicipio`(?, ?, ?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setString(1,mu.getMunicipio());
+            pre.setString(1, mu.getMunicipio());
             pre.setInt(2, mu.getDepartamento().getCoddepartamento());
-            pre.setInt(3, mu.getActivo());
+            pre.setInt(3, mu.getCodmunicipio());
             pre.executeUpdate();
             
         } catch (Exception e) {
@@ -87,36 +86,34 @@ public class DaoMunicipio extends Conexion{
         }
     }
     
-    public List mostrarMunicipio() throws Exception{
+    public List mostrarMunicipio() throws Exception
+    {
         List listamunicipio=new ArrayList();
         ResultSet res;
         Statement st;
-        try{
+        try 
+        {
             this.conectar();
-            String sql="{CALL `innerMunicipio`()}";
+            String sql="{CALL `mostrarMunicipio`()}";
             st=this.getCon().createStatement();
             res=st.executeQuery(sql);
-            
-            while(res.next()){
-               //dep.setCoddepartamento(res.getInt("idDepartamento"));
-               //dep.setDepartamento(res.getString("nombre_departamento"));
-               //System.out.print(res.getString("departamento"));
-               
-               Municipio mu = new Municipio();
+            while(res.next())
+            {
                Departamento dep = new Departamento();
+               dep.setCoddepartamento(res.getInt("id_departamento"));
+               dep.setDepartamento(res.getString("nombre_departamento"));
+               Municipio mu=new Municipio();
                mu.setCodmunicipio(res.getInt("id_municipio"));
                mu.setMunicipio(res.getString("nombre_municipio"));
-               //mu.getDepartamento().setDepartamento(res.getString("departamento"));
-               //mu.getDepartamento().setCoddepartamento(res.getInt("idDepartamento"));
-               dep.setCoddepartamento(res.getInt("idDepartamento"));
-               dep.setDepartamento(res.getString("departamento"));
+               mu.setDepartamento(dep);
                mu.setActivo(res.getInt("activo"));
                listamunicipio.add(mu);
             }
         } catch (Exception e) {
             throw e;
         }
-        finally{
+        finally
+        {
             this.desconectar();
         }
         return listamunicipio;
