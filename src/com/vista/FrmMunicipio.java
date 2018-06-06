@@ -339,6 +339,11 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
 
         jBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
         jBtnEliminar.setText("ELIMINAR");
+        jBtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -436,6 +441,15 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         limpiar();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jBtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEliminarActionPerformed
+        // TODO add your handling code here:
+        if(this.jTXTCodMunicipio.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Nada que eliminar ...");
+        }else{
+            eliminar();
+        }
+    }//GEN-LAST:event_jBtnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
