@@ -7,7 +7,10 @@
 ## Procedimientos almacenados: ##
 
 ```sql
-/* DEPARTAMENTO: */
+/*============================================================
+			DEPARTAMENTO:
+============================================================*/
+
 CREATE PROCEDURE `mostrarDepartamento` ()
 BEGIN
 	SELECT *
@@ -38,14 +41,18 @@ BEGIN
 	SET nombre_departamento = nombre_dep, activo = act
 	WHERE id_departamento = id_dep;
 END
-```
 
-```sql
-/* MUNICIPIO: */
-CREATE PROCEDURE `mostrarMunicipio` ()
+/*============================================================
+			MUNICIPIO
+============================================================*/
+
+CREATE PROCEDURE `innerMunicipio` ()
 BEGIN
-	SELECT * FROM Municipio
-    	WHERE activo = 1;
+	SELECT id_municipio, nombre_municipio, idDepartamento, mu.activo AS activo, dep.nombre_departamento AS departamento
+	FROM Municipio AS mu
+	INNER JOIN Departamento AS dep
+	ON mu.idDepartamento = dep.id_departamento
+	AND mu.activo = 1;
 END
 
 CREATE PROCEDURE `insertarMunicipio` (
@@ -57,16 +64,78 @@ BEGIN
 	VALUES(null, nombre_mun, cod_dep, 1);
 END
 
-CREATE PROCEDURE `innerMunicipio` ()
+CREATE PROCEDURE `modificarMunicipio` (
+	IN nombre_mun VARCHAR(50),
+	IN id_dep INTEGER,
+	IN id_mun INTEGER
+)
 BEGIN
-	SELECT id_municipio, nombre_municipio, idDepartamento, mu.activo AS activo, dep.nombre_departamento AS departamento
-	FROM Municipio AS mu
-	INNER JOIN Departamento AS dep
-	ON mu.idDepartamento = dep.id_departamento
-	AND mu.activo = 1;
+	UPDATE Municipio
+	SET nombre_municipio = nombre_mun, idDepartamento = id_dep, activo = 1
+	WHERE id_municipio = id_mun;
 END
 
+CREATE PROCEDURE `eliminarMunicipio` (
+	IN cod_mun INTEGER
+)
+BEGIN
+	UPDATE Municipio
+	SET activo = 0
+    	WHERE id_municipio = cod_mun;
+END
 
+/*============================================================
+			VOTANTE
+============================================================*/
+
+CREATE PROCEDURE `mostrarVotante` ()
+BEGIN
+	SELECT id_votante, nombre_votante, dui, nombreMadre, nombrePadre, fechaNac, estadoCivil, direccion, idMunicipio, nombre_municipio, vt.activo AS activo
+	FROM Votante vt
+	INNER JOIN Municipio
+	ON id_municipio = idMunicipio
+	WHERE vt.activo = 1;
+END
+
+CREATE PROCEDURE `insertarVotante` (
+	IN nom_vot VARCHAR(50),
+	IN duii VARCHAR(20),
+	IN nombre_madre VARCHAR(50),
+	IN nombre_padre VARCHAR(50),
+	IN fecha_nacimiento VARCHAR(30),
+	IN estado_civil VARCHAR(50),
+	IN direcc VARCHAR(100),
+	IN id_municipio INTEGER
+	
+)
+BEGIN
+	INSERT INTO Votante(id_votante, nombre_votante, dui, nombreMadre, nombrePadre, fechaNac, estadoCivil, direccion, idMunicipio, activo)
+	VALUES(null, nom_vot, duii, nombre_madre, nombre_padre, fecha_nacimiento, estado_civil, direcc, id_municipio, 1);
+END
+
+CREATE PROCEDURE `modificarVotante` (
+	IN id_vot INTEGER,
+	IN nom_vot VARCHAR(50),
+	IN duii VARCHAR(20),
+	IN nombre_madre VARCHAR(50),
+	IN nombre_padre VARCHAR(50),
+	IN fecha_nacimiento VARCHAR(30),
+	IN estado_civil VARCHAR(50),
+	IN direcc VARCHAR(100),
+	IN id_municipio INTEGER	
+)
+BEGIN
+	UPDATE Votante
+	SET nombre_votante=nom_vot, dui=duii, nombreMadre=nombre_madre, nombrePadre=nombre_padre, fechaNac=fecha_nacimiento, estadoCivil=estado_civil, direccion=direcc, idMunicipio=id_municipio, activo=1
+	WHERE id_votante=id_vot;
+END
+
+CREATE PROCEDURE `eliminarVotante` (IN cod_vot INTEGER)
+BEGIN
+	UPDATE Votante
+    	SET Activo = 0
+	WHERE id_votante = cod_vot;
+END
 ```
 
 El sistema debe gestionar todo un proceso de elecciones de presidente de la república,
