@@ -6,6 +6,7 @@ import com.modelo.Municipio;
 import com.modelo.Votante;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -31,7 +32,7 @@ public class FrmVotante extends javax.swing.JInternalFrame {
     Votante vot = new Votante();
     
     public void tablaE(){
-        String [] columnas = {"id", "Nombre", "DUI", "Madre", "Padre", "Fecha nacimiento", "Estado civil", "Direccion", "Municipio"} ;
+        String [] columnas = {"id", "Nombre", "DUI", "Madre", "Padre", "Fecha nacimiento", "Estado civil", "Direccion", "Municipio"};
         Object[] obj = new Object[9];
         DefaultTableModel tabla = new DefaultTableModel(null, columnas);
         List ls;
@@ -98,6 +99,11 @@ public class FrmVotante extends javax.swing.JInternalFrame {
         this.jCbEstadoCivil.setSelectedIndex(0);
         this.jTxtDireccion.setText("");
         this.jCbMunicipio.setSelectedIndex(0);
+        
+        if(!this.jTxtBusqueda.getText().isEmpty()){
+            this.jTxtBusqueda.setText("");
+            tablaE();
+        }
     }
     
     public void insertar(){
@@ -225,6 +231,8 @@ public class FrmVotante extends javax.swing.JInternalFrame {
         jBtnLimpiar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableVotante = new javax.swing.JTable();
+        jButton6 = new javax.swing.JButton();
+        jTxtBusqueda = new javax.swing.JTextField();
 
         setClosable(true);
 
@@ -245,9 +253,17 @@ public class FrmVotante extends javax.swing.JInternalFrame {
 
         jLabel8.setText("DUI:");
 
+        jTxtFechaNacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+
         jTxtDireccion.setColumns(20);
         jTxtDireccion.setRows(5);
         jScrollPane1.setViewportView(jTxtDireccion);
+
+        try {
+            jTxtDui.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         jLabel9.setText("ESTADO CIVIL:");
 
@@ -332,6 +348,18 @@ public class FrmVotante extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(jTableVotante);
 
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda.png"))); // NOI18N
+        jButton6.setText("BUSCAR:");
+        jButton6.setBorder(null);
+        jButton6.setBorderPainted(false);
+        jButton6.setContentAreaFilled(false);
+
+        jTxtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTxtBusquedaKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -383,7 +411,13 @@ public class FrmVotante extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(18, 18, 18)
+                .addComponent(jTxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -420,10 +454,14 @@ public class FrmVotante extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(jTxtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -485,12 +523,61 @@ public class FrmVotante extends javax.swing.JInternalFrame {
         llenarTabla();
     }//GEN-LAST:event_jTableVotanteMouseClicked
 
+    private void jTxtBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtBusquedaKeyPressed
+        if(!this.jTxtBusqueda.getText().isEmpty()){
+            String [] columnas = {"id", "Nombre", "DUI", "Madre", "Padre", "Fecha nacimiento", "Estado civil", "Direccion"};
+            Object[] obj = new Object[8];
+
+            String sql = "SELECT * FROM Votante WHERE id_votante LIKE '%"
+                    +jTxtBusqueda.getText()+"%'"
+                    +"OR nombre_votante LIKE '%"+jTxtBusqueda.getText()+"%'"
+                    +"OR dui LIKE '%"+jTxtBusqueda.getText() + "%'"
+                    +"OR nombreMadre LIKE '%"+jTxtBusqueda.getText() +"%'"
+                    +"OR nombrePadre LIKE '%"+jTxtBusqueda.getText() + "%'"
+                    +"OR fechaNac LIKE '%"+jTxtBusqueda.getText() + "%'"
+                    +"OR estadoCivil LIKE '%"+jTxtBusqueda.getText() + "%'"
+                    +"OR direccion LIKE '%"+jTxtBusqueda.getText() + "%';";
+
+            String sqlll="SELECT * FROM Departamento WHERE id_departamento LIKE '%"
+                    +jTxtBusqueda.getText()+"%'"
+                    +"OR nombre_departamento LIKE '%" + jTxtBusqueda.getText() + "%';";
+
+            DefaultTableModel model = new DefaultTableModel(null, columnas);
+            Conexion con = new Conexion();
+            try {
+                con.conectar();
+                ResultSet rs;
+                Statement st = con.getCon().createStatement();
+                rs = st.executeQuery(sql);
+
+                while(rs.next()){
+                    obj[0] = rs.getString("id_votante");
+                    obj[1] = rs.getString("nombre_votante");
+                    obj[2] = rs.getString("dui");
+                    obj[3] = rs.getString("nombreMadre");
+                    obj[4] = rs.getString("nombrePadre");
+                    obj[5] = rs.getString("fechaNac");
+                    obj[6] = rs.getString("estadoCivil");
+                    obj[7] = rs.getString("direccion");
+                    model.addRow(obj);
+                }
+                jTableVotante.setModel(model);
+            } catch (Exception e) {
+                e.toString();
+            }
+        }
+        if(this.jTxtBusqueda.getText().isEmpty()){
+            tablaE();
+        }
+    }//GEN-LAST:event_jTxtBusquedaKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAgregar;
     private javax.swing.JButton jBtnEliminar;
     private javax.swing.JButton jBtnLimpiar;
     private javax.swing.JButton jBtnModificar;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jCbEstadoCivil;
     private javax.swing.JComboBox<String> jCbMunicipio;
     private javax.swing.JLabel jLabel1;
@@ -506,6 +593,7 @@ public class FrmVotante extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableVotante;
+    private javax.swing.JTextField jTxtBusqueda;
     private javax.swing.JTextField jTxtCodVotante;
     private javax.swing.JTextArea jTxtDireccion;
     private javax.swing.JFormattedTextField jTxtDui;
