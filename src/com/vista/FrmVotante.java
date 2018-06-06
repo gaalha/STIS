@@ -1,5 +1,15 @@
 package com.vista;
 
+import com.conexion.Conexion;
+import com.controlador.DaoVotante;
+import com.modelo.Municipio;
+import com.modelo.Votante;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Edgar Mejía
@@ -11,6 +21,173 @@ public class FrmVotante extends javax.swing.JInternalFrame {
      */
     public FrmVotante() {
         initComponents();
+        tablaE();
+        this.jCbMunicipio.removeAllItems();
+        llenarCombo();
+        this.jTxtCodVotante.setVisible(false);
+    }
+    
+    DaoVotante daov = new DaoVotante();
+    Votante vot = new Votante();
+    
+    public void tablaE(){
+        String [] columnas = {"id", "Nombre", "DUI", "Madre", "Padre", "Fecha nacimiento", "Estado civil", "Direccion", "Municipio"} ;
+        Object[] obj = new Object[9];
+        DefaultTableModel tabla = new DefaultTableModel(null, columnas);
+        List ls;
+        try {
+           ls = daov.mostrarVotante();
+            for(int i=0; i<ls.size(); i++){
+                vot = (Votante)ls.get(i);
+                obj[0] = vot.getCodvotante();
+                obj[1] = vot.getVotante();
+                obj[2] = vot.getDui();
+                obj[3] = vot.getNombremadre();
+                obj[4] = vot.getNombrepadre();
+                obj[5] = vot.getFecha();
+                obj[6] = vot.getEstadocivil();
+                obj[7] = vot.getDireccion();
+                obj[8] = vot.getMunicipio().getMunicipio();
+                tabla.addRow(obj);
+            }
+            this.jTableVotante.setModel(tabla);
+        } 
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al mostrar datos" + e.toString());
+        }
+    }
+    
+    public void llenarTabla(){
+        int fila = this.jTableVotante.getSelectedRow();
+        this.jTxtCodVotante.setText(String.valueOf(this.jTableVotante.getValueAt(fila, 0)));
+        this.jTxtNombreVotante.setText(String.valueOf(this.jTableVotante.getValueAt(fila, 1)));
+        this.jTxtDui.setText(String.valueOf(this.jTableVotante.getValueAt(fila, 2)));
+        this.jTxtNombreMadre.setText(String.valueOf(this.jTableVotante.getValueAt(fila, 3)));
+        this.jTxtNombrePadre.setText(String.valueOf(this.jTableVotante.getValueAt(fila, 4)));
+        this.jTxtFechaNacimiento.setText(String.valueOf(this.jTableVotante.getValueAt(fila, 5)));
+        this.jCbEstadoCivil.setSelectedItem(String.valueOf(this.jTableVotante.getValueAt(fila, 6)));
+        this.jTxtDireccion.setText(String.valueOf(this.jTableVotante.getValueAt(fila, 7)));
+        this.jCbMunicipio.setSelectedItem(String.valueOf(this.jTableVotante.getValueAt(fila, 8)));
+    }
+    
+    public void llenarCombo(){
+        Conexion c = new Conexion();
+        ResultSet res;
+        try {
+            c.conectar();
+            String sql = "SELECT nombre_municipio FROM Municipio WHERE activo = 1";
+            
+            PreparedStatement pre = c.getCon().prepareCall(sql);
+            res = pre.executeQuery();
+            
+            while(res.next()){
+                jCbMunicipio.addItem(res.getString("nombre_municipio"));
+            }
+        } catch (Exception e) {
+            e.toString();
+        }
+    }
+    
+    public void limpiar(){
+        this.jTxtCodVotante.setText("");
+        this.jTxtNombreVotante.setText("");
+        this.jTxtDui.setText("");
+        this.jTxtNombreMadre.setText("");
+        this.jTxtNombrePadre.setText("");
+        this.jTxtFechaNacimiento.setText("");
+        this.jCbEstadoCivil.setSelectedIndex(0);
+        this.jTxtDireccion.setText("");
+        this.jCbMunicipio.setSelectedIndex(0);
+    }
+    
+    public void insertar(){
+        try {
+            Municipio m = new Municipio();
+
+            vot.setVotante(this.jTxtNombreVotante.getText().trim());
+            vot.setDui(this.jTxtDui.getText().trim());
+            vot.setNombremadre(this.jTxtNombreMadre.getText().trim());
+            vot.setNombrepadre(this.jTxtNombrePadre.getText().trim());
+            vot.setFecha(this.jTxtFechaNacimiento.getText().trim());
+            vot.setEstadocivil(this.jCbEstadoCivil.getSelectedItem().toString().trim());
+            vot.setDireccion(this.jTxtDireccion.getText().trim());
+
+            String municipio = this.jCbMunicipio.getSelectedItem().toString().trim();
+            String sql = "SELECT id_municipio FROM Municipio WHERE nombre_municipio = '" + municipio + "'";
+            int id_municipio = daov.valorInteger(sql);
+
+            m.setCodmunicipio(id_municipio);
+            m.setMunicipio(municipio);
+            vot.setMunicipio(m);
+
+            daov.insertarVotante(vot);
+
+            JOptionPane.showMessageDialog(null, "Registro guardado con exito.");
+            tablaE();
+            limpiar();
+        } catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(this,e.toString(),"ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void modificar(){
+        try {
+            Municipio m = new Municipio();
+            
+            vot.setCodvotante(Integer.parseInt(this.jTxtCodVotante.getText().trim()));
+            vot.setVotante(this.jTxtNombreVotante.getText().trim());
+            vot.setDui(this.jTxtDui.getText().trim());
+            vot.setNombremadre(this.jTxtNombreMadre.getText().trim());
+            vot.setNombrepadre(this.jTxtNombrePadre.getText().trim());
+            vot.setFecha(this.jTxtFechaNacimiento.getText().trim());
+            vot.setEstadocivil(this.jCbEstadoCivil.getSelectedItem().toString().trim());
+            vot.setDireccion(this.jTxtDireccion.getText().trim());
+            
+            String municipio = this.jCbMunicipio.getSelectedItem().toString().trim();
+            String sql = "SELECT id_municipio FROM Municipio WHERE nombre_municipio = '" + municipio + "'";
+            int id_municipio = daov.valorInteger(sql);
+
+            m.setCodmunicipio(id_municipio);
+            m.setMunicipio(municipio);
+            vot.setMunicipio(m);
+            
+            int SiONo=JOptionPane.showConfirmDialog(this, "¿Desea modificar el Votante?",
+                    "Modificar Votante",JOptionPane.YES_NO_OPTION);
+            if(SiONo == 0){
+                daov.modificarVotante(vot);
+                JOptionPane.showMessageDialog(rootPane, "Votante modificado con exito", 
+                        "Confirmación",
+                        JOptionPane.INFORMATION_MESSAGE);
+                tablaE();
+                limpiar();
+            }
+            else{
+                limpiar();
+            }
+        }catch (Exception ex) {
+           ex.printStackTrace();
+        }
+    }
+    
+    public void eliminar(){
+       try{
+            vot.setCodvotante(Integer.parseInt(this.jTxtCodVotante.getText().trim()));
+            int SiONo=JOptionPane.showConfirmDialog(this, "Desea eliminar el Votante",
+                    "Eliminar Votante", JOptionPane.YES_NO_OPTION);
+            if(SiONo == 0){
+                daov.eliminarVotante(vot);
+                JOptionPane.showMessageDialog(rootPane,"Eliminado con exito" , "Confirmación",
+                        JOptionPane.INFORMATION_MESSAGE);
+                tablaE();
+                limpiar();
+            }else{
+                limpiar();
+            }
+       } catch (Exception e) {
+           JOptionPane.showMessageDialog(rootPane, e.toString(), "Error",
+                    JOptionPane.ERROR_MESSAGE);
+       }
     }
 
     /**
@@ -42,12 +219,12 @@ public class FrmVotante extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jCbEstadoCivil = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
-        BtnInsertar = new javax.swing.JButton();
+        jBtnAgregar = new javax.swing.JButton();
         jBtnModificar = new javax.swing.JButton();
         jBtnEliminar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jBtnLimpiar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableVotante = new javax.swing.JTable();
 
         setClosable(true);
 
@@ -78,11 +255,11 @@ public class FrmVotante extends javax.swing.JInternalFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 102, 102));
 
-        BtnInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
-        BtnInsertar.setText("AGREGAR");
-        BtnInsertar.addActionListener(new java.awt.event.ActionListener() {
+        jBtnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
+        jBtnAgregar.setText("AGREGAR");
+        jBtnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnInsertarActionPerformed(evt);
+                jBtnAgregarActionPerformed(evt);
             }
         });
 
@@ -96,38 +273,48 @@ public class FrmVotante extends javax.swing.JInternalFrame {
 
         jBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
         jBtnEliminar.setText("ELIMINAR");
+        jBtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEliminarActionPerformed(evt);
+            }
+        });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/goma-de-borrar.png"))); // NOI18N
-        jButton1.setText("LIMPIAR");
+        jBtnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/goma-de-borrar.png"))); // NOI18N
+        jBtnLimpiar.setText("LIMPIAR");
+        jBtnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(BtnInsertar)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBtnAgregar)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnModificar)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnEliminar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jBtnLimpiar)
+                .addGap(52, 52, 52))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnInsertar)
+                    .addComponent(jBtnAgregar)
                     .addComponent(jBtnModificar)
                     .addComponent(jBtnEliminar)
-                    .addComponent(jButton1))
-                .addContainerGap())
+                    .addComponent(jBtnLimpiar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableVotante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -138,7 +325,12 @@ public class FrmVotante extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jTableVotante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableVotanteMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTableVotante);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,30 +430,67 @@ public class FrmVotante extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInsertarActionPerformed
+    private void jBtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAgregarActionPerformed
         // TODO add your handling code here:
-        /*if(this.jTXTNombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Nada que insertar ...");
+        if(this.jTxtNombreVotante.getText().isEmpty() ||
+                this.jTxtDui.getText().isEmpty() ||
+                this.jTxtNombreMadre.getText().isEmpty() ||
+                this.jTxtNombrePadre.getText().isEmpty() ||
+                this.jTxtFechaNacimiento.getText().isEmpty() ||
+                this.jTxtDireccion.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No puedes dejar campos vacios.");
         }else{
             insertar();
-        }*/
-    }//GEN-LAST:event_BtnInsertarActionPerformed
+        }
+    }//GEN-LAST:event_jBtnAgregarActionPerformed
 
     private void jBtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnModificarActionPerformed
         // TODO add your handling code here:
-        /*if(this.jTXTCodMunicipio.getText().isEmpty() || this.jTXTNombre.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Nada que insertar ...");
-        }else{
+        if(!(this.jTxtCodVotante.getText().isEmpty() &&
+                this.jTxtNombreVotante.getText().isEmpty() &&
+                this.jTxtDui.getText().isEmpty() &&
+                this.jTxtNombreMadre.getText().isEmpty() &&
+                this.jTxtNombrePadre.getText().isEmpty() &&
+                this.jTxtFechaNacimiento.getText().isEmpty() &&
+                this.jTxtDireccion.getText().isEmpty())){
             modificar();
-        }*/
+        }else{
+            JOptionPane.showMessageDialog(null, "No puedes dejar campos vacios.");
+        }
+        
     }//GEN-LAST:event_jBtnModificarActionPerformed
+
+    private void jBtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEliminarActionPerformed
+        // TODO add your handling code here:
+        if(!(this.jTxtCodVotante.getText().isEmpty() &&
+                this.jTxtNombreVotante.getText().isEmpty() &&
+                this.jTxtDui.getText().isEmpty() &&
+                this.jTxtNombreMadre.getText().isEmpty() &&
+                this.jTxtNombrePadre.getText().isEmpty() &&
+                this.jTxtFechaNacimiento.getText().isEmpty() &&
+                this.jTxtDireccion.getText().isEmpty())){
+            eliminar();
+        }else{
+            JOptionPane.showMessageDialog(null, "Nada que eliminar...");
+        }
+    }//GEN-LAST:event_jBtnEliminarActionPerformed
+
+    private void jBtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLimpiarActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+    }//GEN-LAST:event_jBtnLimpiarActionPerformed
+
+    private void jTableVotanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableVotanteMouseClicked
+        // TODO add your handling code here:
+        llenarTabla();
+    }//GEN-LAST:event_jTableVotanteMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnInsertar;
+    private javax.swing.JButton jBtnAgregar;
     private javax.swing.JButton jBtnEliminar;
+    private javax.swing.JButton jBtnLimpiar;
     private javax.swing.JButton jBtnModificar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jCbEstadoCivil;
     private javax.swing.JComboBox<String> jCbMunicipio;
     private javax.swing.JLabel jLabel1;
@@ -276,7 +505,7 @@ public class FrmVotante extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableVotante;
     private javax.swing.JTextField jTxtCodVotante;
     private javax.swing.JTextArea jTxtDireccion;
     private javax.swing.JFormattedTextField jTxtDui;
