@@ -226,7 +226,7 @@ public class FrmDepartamento extends javax.swing.JInternalFrame {
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 255));
 
-        jBtnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
+        jBtnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.png"))); // NOI18N
         jBtnAgregar.setText("AGREGAR");
         jBtnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -372,19 +372,23 @@ public class FrmDepartamento extends javax.swing.JInternalFrame {
 
     private void jBtnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnAgregarMouseClicked
         if(jTxtDepartamento.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "No puedes dejar campos vacios");
+            JOptionPane.showMessageDialog(null, "Nada que guardar ...");
         }else{
             insertar();
         }
     }//GEN-LAST:event_jBtnAgregarMouseClicked
 
     private void jBtnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnModificarMouseClicked
-        modificar();
+        if(this.jTxtCodigodepartamento.getText().isEmpty() && this.jTxtDepartamento.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Nada que modificar ...");
+        }else{
+            modificar();
+        }
     }//GEN-LAST:event_jBtnModificarMouseClicked
 
     private void jBtnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnEliminarMouseClicked
         if(jTxtDepartamento.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El registro no puede estar vacio.");
+            JOptionPane.showMessageDialog(null, "Nada que eliminar ...");
         }else{
             eliminar();
         }

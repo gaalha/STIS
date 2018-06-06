@@ -300,7 +300,7 @@ public class FrmEncargado extends javax.swing.JInternalFrame {
             }
         });
 
-        jBtnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/barajar.png"))); // NOI18N
+        jBtnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit.png"))); // NOI18N
         jBtnModificar.setText("MODIFICAR");
         jBtnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -308,7 +308,7 @@ public class FrmEncargado extends javax.swing.JInternalFrame {
             }
         });
 
-        jBtnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
+        jBtnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.png"))); // NOI18N
         jBtnAgregar.setText("AGREGAR");
         jBtnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -452,8 +452,6 @@ public class FrmEncargado extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBtnBuscar;
     private javax.swing.JButton jBtnEliminar;
     private javax.swing.JButton jBtnModificar;
-    private javax.swing.JButton jBtnSalir;
-    private javax.swing.JButton jBtnSalir1;
     private javax.swing.JButton jBtnSalir2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -462,8 +460,6 @@ public class FrmEncargado extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTablaEncargado;
