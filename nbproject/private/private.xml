@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/modelo/Municipio.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/modelo/Periodo.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/controlador/DaoPartidoPolitico.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/modelo/Votante.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/vista/FrmAdministrador.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/modelo/TipoCandidato.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/modelo/Departamento.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/modelo/PartidoPolitico.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/modelo/Jrv.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/modelo/Candidato.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/controlador/DaoCentroVotacion.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/modelo/Usuario.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/controlador/DaoPeriodo.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/controlador/DaoEncargado.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/controlador/DaoJRV.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/vista/FrmDelegado.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/modelo/Encargado.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/vista/FrmLoginAdministrador.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/controlador/DaoUsuario.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/controlador/DaoMunicipio.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/vista/FrmUsuario.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/controlador/DaoDepartamento.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/controlador/DaoCandidato.java</file>
+            <file>file:/C:/Users/carlos%20franco/Documents/NetBeansProjects/SistemaVotacion2018/src/com/vista/FrmLogin.java</file>
+        </group>
+    </open-files>
+</project-private>
