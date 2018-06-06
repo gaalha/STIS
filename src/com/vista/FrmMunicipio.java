@@ -238,6 +238,11 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableMunicipio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMunicipioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableMunicipio);
 
         jBtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda.png"))); // NOI18N
@@ -321,6 +326,11 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
 
         jBtnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit.png"))); // NOI18N
         jBtnModificar.setText("MODIFICAR");
+        jBtnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnModificarActionPerformed(evt);
+            }
+        });
 
         jBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
         jBtnEliminar.setText("ELIMINAR");
@@ -402,6 +412,20 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
             insertar();
         }
     }//GEN-LAST:event_BtnInsertarActionPerformed
+
+    private void jBtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnModificarActionPerformed
+        // TODO add your handling code here:
+        if(this.jTXTCodMunicipio.getText().isEmpty() || this.jTXTNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Nada que insertar ...");
+        }else{
+            modificar();
+        }
+    }//GEN-LAST:event_jBtnModificarActionPerformed
+
+    private void jTableMunicipioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMunicipioMouseClicked
+        // TODO add your handling code here:
+        llenarTabla();
+    }//GEN-LAST:event_jTableMunicipioMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
