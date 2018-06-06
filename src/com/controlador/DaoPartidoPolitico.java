@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author carlos franco
+ * @author Edgar Mejia
  */
 public class DaoPartidoPolitico extends Conexion{
     public void insertarPartido(PartidoPolitico par) throws Exception{
@@ -20,10 +20,10 @@ public class DaoPartidoPolitico extends Conexion{
             this.conectar();
             String sql="{CALL `insertarPartido`(null,?,?,?,?)}";
             PreparedStatement pre=this.getCon().prepareStatement(sql);
-            pre.setString(2,par.getPartido());
-            pre.setString(3,par.getPresidente());
-            pre.setBytes(4, par.getFotoPartido());
-            pre.setInt(5, par.getActivo());
+            pre.setString(1,par.getPartido());
+            pre.setString(2,par.getPresidente());
+            pre.setBytes(3, par.getFotoPartido());
+            pre.setInt(4, par.getActivo());
             pre.executeUpdate();
             
         } catch (Exception e) {

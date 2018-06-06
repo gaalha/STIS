@@ -201,6 +201,7 @@ public class FrmLoginAdministrador extends javax.swing.JFrame {
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
+            System.out.print(rs);
             while (rs.next()){
                 cap=rs.getString("tipo_usuario");
             }

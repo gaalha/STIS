@@ -123,6 +123,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnPartido.setBorder(null);
         jBtnPartido.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnPartido.setIconTextGap(10);
+        jBtnPartido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnPartidoMouseClicked(evt);
+            }
+        });
 
         jBtnJRV.setBackground(new java.awt.Color(0, 51, 102));
         jBtnJRV.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -371,6 +376,12 @@ public class FrmAdministrador extends javax.swing.JFrame {
         this.jDesktopPane1.add(en);
         en.setVisible(true);
     }//GEN-LAST:event_jBtnEncargadoActionPerformed
+
+    private void jBtnPartidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnPartidoMouseClicked
+        FrmPartidoPolitico part = new FrmPartidoPolitico();
+        this.jDesktopPane1.add(part);
+        part.setVisible(true);
+    }//GEN-LAST:event_jBtnPartidoMouseClicked
 
     /**
      * @param args the command line arguments
