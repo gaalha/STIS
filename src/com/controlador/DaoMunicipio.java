@@ -94,14 +94,14 @@ public class DaoMunicipio extends Conexion{
         try 
         {
             this.conectar();
-            String sql="{CALL `mostrarMunicipio`()}";
+            String sql="{CALL `innerMunicipio`()}";
             st=this.getCon().createStatement();
             res=st.executeQuery(sql);
             while(res.next())
             {
                Departamento dep = new Departamento();
-               dep.setCoddepartamento(res.getInt("id_departamento"));
-               dep.setDepartamento(res.getString("nombre_departamento"));
+               dep.setCoddepartamento(res.getInt("idDepartamento"));
+               dep.setDepartamento(res.getString("departamento"));
                Municipio mu=new Municipio();
                mu.setCodmunicipio(res.getInt("id_municipio"));
                mu.setMunicipio(res.getString("nombre_municipio"));

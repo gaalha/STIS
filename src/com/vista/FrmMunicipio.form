@@ -29,7 +29,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="JtxtCodigoMunicipio" min="-2" pref="147" max="-2" attributes="0"/>
+                              <Component id="jTXTCodMunicipio" min="-2" pref="147" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -47,7 +47,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JtxtCodigoMunicipio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTXTCodMunicipio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -90,8 +90,8 @@
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jTxtMunicipio" max="32767" attributes="0"/>
-                      <Component id="jCbDepartamento" min="-2" pref="168" max="-2" attributes="0"/>
+                      <Component id="jTXTNombre" max="32767" attributes="0"/>
+                      <Component id="jCbxDepartamentos" min="-2" pref="168" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -103,12 +103,12 @@
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtMunicipio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTXTNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCbDepartamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCbxDepartamentos" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -121,22 +121,17 @@
             <Property name="text" type="java.lang.String" value="NOMBRE MUNICIPIO:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtMunicipio">
+        <Component class="javax.swing.JTextField" name="jTXTNombre">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="text" type="java.lang.String" value="NOMBRE DEPARTAMENTO:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jCbDepartamento">
+        <Component class="javax.swing.JComboBox" name="jCbxDepartamentos">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -195,7 +190,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="jTableMunicipio">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
@@ -226,7 +221,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="JtxtCodigoMunicipio">
+    <Component class="javax.swing.JTextField" name="jTXTCodMunicipio">
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
@@ -297,7 +292,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jBtnAgregar" max="32767" attributes="0"/>
+                  <Component id="BtnInsertar" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jBtnModificar" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -311,7 +306,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jBtnAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnInsertar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBtnModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBtnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -321,7 +316,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jBtnAgregar">
+        <Component class="javax.swing.JButton" name="BtnInsertar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagenes/guardar.png"/>
@@ -332,7 +327,7 @@
         <Component class="javax.swing.JButton" name="jBtnModificar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/barajar.png"/>
+              <Image iconType="3" name="/imagenes/edit.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="MODIFICAR"/>
           </Properties>

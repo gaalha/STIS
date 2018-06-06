@@ -1,13 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.vista;
+import com.conexion.Conexion;
+import com.controlador.DaoMunicipio;
+import com.modelo.Departamento;
+import com.modelo.Municipio;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author carlos franco
+ * @author Edgar Mejia
  */
 public class FrmMunicipio extends javax.swing.JInternalFrame {
 
@@ -16,7 +20,143 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
      */
     public FrmMunicipio() {
         initComponents();
-        JtxtCodigoMunicipio.setVisible(false);
+        tablaE();
+        jTXTCodMunicipio.setVisible(false);
+        jCbxDepartamentos.removeAllItems();
+        llenarCombo();
+    }
+    
+    DaoMunicipio daom = new DaoMunicipio();
+    Municipio mun = new Municipio();
+    Departamento dep = new Departamento();
+    
+    public void llenarTabla(){
+        int fila = this.jTableMunicipio.getSelectedRow();
+        this.jTXTCodMunicipio.setText(String.valueOf(this.jTableMunicipio.getValueAt(fila, 0)));
+        this.jTXTNombre.setText(String.valueOf(this.jTableMunicipio.getValueAt(fila, 1)));
+        this.jCbxDepartamentos.setSelectedItem(String.valueOf(this.jTableMunicipio.getValueAt(fila, 2)));
+    }
+    
+    public void llenarCombo(){
+        Conexion c = new Conexion();
+        ResultSet res;
+        try {
+            c.conectar();
+            String sql = "SELECT nombre_departamento FROM Departamento WHERE activo = 1";
+            
+            PreparedStatement pre = c.getCon().prepareCall(sql);
+            res = pre.executeQuery();
+            
+            while(res.next()){
+                jCbxDepartamentos.addItem(res.getString("nombre_departamento"));
+            }
+        } catch (Exception e) {
+            e.toString();
+        }
+    }
+    
+    public void tablaE(){
+        String [] columnas = {"id", "Municipio", "Departamento"} ;
+        Object[] obj = new Object[3];
+        DefaultTableModel tabla = new DefaultTableModel(null, columnas);
+        List ls;
+        try {
+           ls = daom.mostrarMunicipio();
+            for(int i=0; i<ls.size(); i++){
+                mun = (Municipio)ls.get(i);
+                obj[0] = mun.getCodmunicipio();
+                obj[1] = mun.getMunicipio();
+                obj[2] = mun.getDepartamento().getDepartamento();
+                tabla.addRow(obj);
+            }
+            ls = daom.mostrarMunicipio();
+            this.jTableMunicipio.setModel(tabla);
+        } 
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al mostrar datos" + e.toString());
+        }
+    }
+
+    public void insertar(){
+        try {
+            Departamento d = new Departamento();
+
+            mun.setMunicipio(this.jTXTNombre.getText().trim());
+            String depa = jCbxDepartamentos.getSelectedItem().toString();
+            String sql = "SELECT id_departamento FROM Departamento WHERE nombre_departamento = '" + depa + "'";
+            int idDepa = daom.valorInteger(sql);
+            d.setCoddepartamento(idDepa);
+
+            d.setDepartamento(depa);
+            mun.setDepartamento(d);
+
+            daom.insertarMunicipio(mun);
+            JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
+            tablaE();
+            limpiar();
+        } catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(this,e.toString(),"ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void eliminar(){
+       try{
+            mun.setCodmunicipio(Integer.parseInt(this.jTXTCodMunicipio.getText().trim()));
+            int SiONo=JOptionPane.showConfirmDialog(this, "Desea eliminar el Municipio",
+                    "Eliminar Municipio", JOptionPane.YES_NO_OPTION);
+            if(SiONo == 0){
+                daom.eliminarMunicipio(mun);
+                JOptionPane.showMessageDialog(rootPane,"Eliminado con exito" , "Confirmación",
+                        JOptionPane.INFORMATION_MESSAGE);
+                tablaE();
+                limpiar();
+            }else{
+                limpiar();
+            }
+       } catch (Exception e) {
+           JOptionPane.showMessageDialog(rootPane, e.toString(), "Error",
+                    JOptionPane.ERROR_MESSAGE);
+       }
+    }
+    
+    public void modificar(){
+        try {
+            Departamento d = new Departamento();
+            
+            mun.setCodmunicipio(Integer.parseInt(this.jTXTCodMunicipio.getText().trim()));
+            mun.setMunicipio(this.jTXTNombre.getText().trim());
+            
+           String depa = jCbxDepartamentos.getSelectedItem().toString();
+           String sql = "SELECT id_departamento FROM Departamento WHERE nombre_departamento = '" + depa + "'";
+           int idDepa = daom.valorInteger(sql);
+           d.setCoddepartamento(idDepa);
+           
+           d.setDepartamento(depa);
+           mun.setDepartamento(d);
+            
+            int SiONo=JOptionPane.showConfirmDialog(this, "¿Desea modificar el Municipio?",
+                    "Modificar Municipio",JOptionPane.YES_NO_OPTION);
+            if(SiONo == 0){
+                daom.modificarMunicipio(mun);
+                JOptionPane.showMessageDialog(rootPane, "Municipio modificado con exito", 
+                        "Confirmación",
+                        JOptionPane.INFORMATION_MESSAGE);
+                tablaE();
+                limpiar();
+            }
+            else{
+                limpiar();
+            }
+        }catch (Exception ex) {
+           ex.printStackTrace();
+        }
+    }
+    
+    public void limpiar(){
+        this.jTXTCodMunicipio.setText("");
+        this.jTXTNombre.setText("");
+        this.jCbxDepartamentos.setSelectedIndex(0);
     }
 
     /**
@@ -31,20 +171,20 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTxtMunicipio = new javax.swing.JTextField();
+        jTXTNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jCbDepartamento = new javax.swing.JComboBox<>();
+        jCbxDepartamentos = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableMunicipio = new javax.swing.JTable();
         jBtnBuscar = new javax.swing.JButton();
         jTxtBusqueda = new javax.swing.JTextField();
-        JtxtCodigoMunicipio = new javax.swing.JTextField();
+        jTXTCodMunicipio = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jBtnSalir = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jBtnAgregar = new javax.swing.JButton();
+        BtnInsertar = new javax.swing.JButton();
         jBtnModificar = new javax.swing.JButton();
         jBtnEliminar = new javax.swing.JButton();
 
@@ -57,8 +197,6 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
 
         jLabel3.setText("NOMBRE DEPARTAMENTO:");
 
-        jCbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -70,8 +208,8 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTxtMunicipio)
-                    .addComponent(jCbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTXTNombre)
+                    .addComponent(jCbxDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -80,17 +218,17 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTxtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTXTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jCbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCbxDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableMunicipio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -101,7 +239,7 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableMunicipio);
 
         jBtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda.png"))); // NOI18N
         jBtnBuscar.setText("BUSCAR:");
@@ -174,10 +312,10 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
 
         jPanel4.setBackground(new java.awt.Color(102, 102, 255));
 
-        jBtnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
-        jBtnAgregar.setText("AGREGAR");
+        BtnInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
+        BtnInsertar.setText("AGREGAR");
 
-        jBtnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/barajar.png"))); // NOI18N
+        jBtnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit.png"))); // NOI18N
         jBtnModificar.setText("MODIFICAR");
 
         jBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
@@ -189,7 +327,7 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jBtnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BtnInsertar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBtnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -201,7 +339,7 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnAgregar)
+                    .addComponent(BtnInsertar)
                     .addComponent(jBtnModificar)
                     .addComponent(jBtnEliminar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -221,7 +359,7 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(32, 32, 32)
-                                .addComponent(JtxtCodigoMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTXTCodMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -233,10 +371,10 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(JtxtCodigoMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTXTCodMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,14 +392,13 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField JtxtCodigoMunicipio;
-    private javax.swing.JButton jBtnAgregar;
+    private javax.swing.JButton BtnInsertar;
     private javax.swing.JButton jBtnBuscar;
     private javax.swing.JButton jBtnEliminar;
     private javax.swing.JButton jBtnModificar;
     private javax.swing.JButton jBtnSalir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jCbDepartamento;
+    private javax.swing.JComboBox<String> jCbxDepartamentos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -270,8 +407,9 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTXTCodMunicipio;
+    private javax.swing.JTextField jTXTNombre;
+    private javax.swing.JTable jTableMunicipio;
     private javax.swing.JTextField jTxtBusqueda;
-    private javax.swing.JTextField jTxtMunicipio;
     // End of variables declaration//GEN-END:variables
 }
