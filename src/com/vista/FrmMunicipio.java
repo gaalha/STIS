@@ -94,8 +94,7 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Datos Insertado Correctamente");
             tablaE();
             limpiar();
-        } catch (Exception e) 
-        {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this,e.toString(),"ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -314,6 +313,11 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
 
         BtnInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         BtnInsertar.setText("AGREGAR");
+        BtnInsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnInsertarActionPerformed(evt);
+            }
+        });
 
         jBtnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit.png"))); // NOI18N
         jBtnModificar.setText("MODIFICAR");
@@ -389,6 +393,15 @@ public class FrmMunicipio extends javax.swing.JInternalFrame {
     private void jBtnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnSalirMouseClicked
         this.setVisible(false);
     }//GEN-LAST:event_jBtnSalirMouseClicked
+
+    private void BtnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInsertarActionPerformed
+        // TODO add your handling code here:
+        if(this.jTXTNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Nada que insertar ...");
+        }else{
+            insertar();
+        }
+    }//GEN-LAST:event_BtnInsertarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
