@@ -450,14 +450,14 @@ public class FrmLogin extends javax.swing.JFrame {
                 cap=rs.getString("dui");
                 nombre=rs.getString("nombre_votante");
             }
-            if (cap.equals(this.jFftDui.getText())){
+            /*if (cap.equals(this.jFftDui.getText())){
                 this.setVisible(false);
                 JOptionPane.showMessageDialog(null, "Bienvenido: "+nombre);
                 FrmVotante vot = new FrmVotante();
                 vot.setVisible(true);
                 vot.pack();
                 FrmVotante.lblUsuario.setText(nombre);
-            }
+            }*/
             if ((!cap.equals(this.jFftDui.getText()))){
                 JOptionPane.showMessageDialog(this, "DATOS NO EXITEN EN LA BASE!");
                 limpiar();

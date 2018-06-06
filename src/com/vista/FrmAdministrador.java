@@ -114,6 +114,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jBtnVotante.setBorder(null);
         jBtnVotante.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBtnVotante.setIconTextGap(75);
+        jBtnVotante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnVotanteActionPerformed(evt);
+            }
+        });
 
         jBtnPartido.setBackground(new java.awt.Color(0, 51, 102));
         jBtnPartido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -371,6 +376,13 @@ public class FrmAdministrador extends javax.swing.JFrame {
         this.jDesktopPane1.add(en);
         en.setVisible(true);
     }//GEN-LAST:event_jBtnEncargadoActionPerformed
+
+    private void jBtnVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnVotanteActionPerformed
+        // TODO add your handling code here:
+        FrmVotante frmvot = new FrmVotante();
+        this.jDesktopPane1.add(frmvot);
+        frmvot.setVisible(true);
+    }//GEN-LAST:event_jBtnVotanteActionPerformed
 
     /**
      * @param args the command line arguments
